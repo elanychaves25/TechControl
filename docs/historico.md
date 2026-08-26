@@ -12,8 +12,8 @@ O histórico deve permitir consultar os registros anteriores de empréstimos e d
 
 | Equipamento | Usuário responsável | Data de retirada | Data de devolução |
 |---|---|---|---|
-| Notebook (EQ001) | Usuário 1 | 26/08/2026 | 28/08/2026 |
-| Tablet (EQ003) | Usuário 2 | 27/08/2026 | 29/08/2026 |
+| Notebook (EQ001) | Elany | 26/08/2026 | 28/08/2026 |
+| Tablet (EQ003) | Maria Amelia | 27/08/2026 | 29/08/2026 |
 
 ## Funcionamento
 
