@@ -1,4 +1,4 @@
-# Cadastro de Usuários
+# Controle de Usuários
 
 ## Objetivo
 
