@@ -1,3 +1,4 @@
+<img width="8192" height="5185" alt="fluxograma novo" src="https://github.com/user-attachments/assets/5df14826-51fd-436f-abf4-b0f2e7b96ac1" />
 # Modelagem do Sistema TechControl
 
 ## 1. Objetivo da modelagem
