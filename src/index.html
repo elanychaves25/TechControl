@@ -1,1713 +1,386 @@
 
     
         
-       
-        <!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TechControl</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background: #f4f6f8;
-            color: #333;
-        }
-
-        /* CABEÇALHO */
-
-        header {
-            background: #1f4e79;
-            color: white;
-            padding: 25px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin-bottom: 8px;
-        }
-
-        /* MENU */
-
-        nav {
-            background: white;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        nav button {
-            background: #1f4e79;
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: 0.2s;
-        }
-
-        nav button:hover {
-            background: #163a5c;
-        }
-
-        /* BOTÃO DA PÁGINA ATUAL */
-
-        nav button.ativo {
-            background: #9fd3f2;
-            color: #174a70;
-            font-weight: bold;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.20);
-            transform: translateY(-1px);
-        }
-
-        /* CONTEÚDO */
-
-        main {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .tela {
-            display: none;
-        }
-
-        .tela.ativa {
-            display: block;
-        }
-
-        h2 {
-            color: #1f4e79;
-            margin-bottom: 20px;
-        }
-
-        h3 {
-            color: #1f4e79;
-        }
-
-        /* CARD */
-
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            margin-bottom: 20px;
-        }
-
-        /* TABELAS */
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            margin-top: 15px;
-        }
-
-        th {
-            background: #1f4e79;
-            color: white;
-            padding: 12px;
-            text-align: left;
-        }
-
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        tr:hover {
-            background: #f1f7fc;
-        }
-
-        /* SITUAÇÕES */
-
-        .disponivel {
-            color: #238636;
-            font-weight: bold;
-        }
-
-        .emprestado {
-            color: #d97706;
-            font-weight: bold;
-        }
-
-        .indisponivel {
-            color: #c62828;
-            font-weight: bold;
-        }
-
-        /* FORMULÁRIOS */
-
-        form {
-            display: grid;
-            gap: 12px;
-        }
-
-        label {
-            font-weight: bold;
-            color: #1f4e79;
-        }
-
-        input,
-        select {
-            padding: 10px;
-            border: 1px solid #bbb;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-
-        input:focus,
-        select:focus {
-            outline: none;
-            border-color: #6bb6e8;
-        }
-
-        /* BOTÃO PRINCIPAL */
-
-        .btn {
-            background: #1f4e79;
-            color: white;
-            border: none;
-            padding: 11px 18px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .btn:hover {
-            background: #163a5c;
-        }
-
-        /* BOTÃO EDITAR - AZUL BEBÊ */
-
-        .btn-editar {
-            background: #b9dcf5;
-            color: #174a70;
-            border: none;
-            padding: 7px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-right: 5px;
-        }
-
-        .btn-editar:hover {
-            background: #9fd3f2;
-        }
-
-        /* BOTÃO EXCLUIR - AZUL CLARINHO */
-
-        .btn-excluir {
-            background: #d4eafb;
-            color: #174a70;
-            border: none;
-            padding: 7px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .btn-excluir:hover {
-            background: #b9dcf5;
-        }
-
-        /* PESQUISA */
-
-        .pesquisa {
-            margin-bottom: 15px;
-        }
-
-        .pesquisa input {
-            width: 100%;
-        }
-
-        /* MENSAGEM */
-
-        .mensagem {
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 6px;
-            background: #e8f4fc;
-            color: #174a70;
-        }
-
-        /* RESPONSIVO */
-
-        @media (max-width: 700px) {
-
-            main {
-                padding: 0 10px;
-            }
-
-            table {
-                font-size: 13px;
-            }
-
-            th,
-            td {
-                padding: 8px;
-            }
-
-            .btn-editar,
-            .btn-excluir {
-                display: block;
-                margin: 3px 0;
-                width: 100%;
-            }
-
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- CABEÇALHO -->
-
-    <header>
-
-        <h1>TechControl</h1>
-
-        <p>
-            Sistema de Controle de Empréstimo de Equipamentos Escolares
-        </p>
-
-    </header>
-
-
-    <!-- MENU -->
-
-    <nav>
-
-        <button
-            id="btn-inicio"
-            class="ativo"
-            onclick="mostrarTela('inicio', this)">
-            Início
-        </button>
-
-        <button
-            id="btn-equipamentos"
-            onclick="mostrarTela('equipamentos', this)">
-            Equipamentos
-        </button>
-
-        <button
-            id="btn-usuarios"
-            onclick="mostrarTela('usuarios', this)">
-            Usuários
-        </button>
-
-        <button
-            id="btn-emprestimo"
-            onclick="mostrarTela('emprestimo', this)">
-            Empréstimo
-        </button>
-
-        <button
-            id="btn-devolucao"
-            onclick="mostrarTela('devolucao', this)">
-            Devolução
-        </button>
-
-        <button
-            id="btn-historico"
-            onclick="mostrarTela('historico', this)">
-            Histórico
-        </button>
-
-    </nav>
-
-
-    <main>
-
-
-        <!-- INÍCIO -->
-
-        <section id="inicio" class="tela ativa">
-
-            <div class="card">
-
-                <h2>Bem-vindo ao TechControl!</h2>
-
-                <p>
-                    Sistema para controle de empréstimos e devoluções
-                    de equipamentos escolares.
-                </p>
-
-                <br>
-
-                <p>
-                    Utilize o menu acima para acessar as funções
-                    do sistema.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- EQUIPAMENTOS -->
-
-        <section id="equipamentos" class="tela">
-
-            <h2>Equipamentos</h2>
-
-            <div class="card">
-
-                <!-- PESQUISA -->
-
-                <div class="pesquisa">
-
-                    <input
-                        type="text"
-                        id="pesquisaEquipamento"
-                        placeholder="Pesquisar por nome ou código..."
-                        onkeyup="atualizarEquipamentos()">
-
-                </div>
-
-
-                <!-- TABELA -->
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>ID</th>
-
-                            <th>Nome</th>
-
-                            <th>Situação</th>
-
-                            <th>Ações</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="tabelaEquipamentos"></tbody>
-
-                </table>
-
-            </div>
-
-
-            <!-- CADASTRO -->
-
-            <div class="card">
-
-                <h3>Cadastrar equipamento</h3>
-
-                <br>
-
-                <form onsubmit="cadastrarEquipamento(event)">
-
-                    <label>ID do equipamento:</label>
-
-                    <input
-                        type="text"
-                        id="idEquipamento"
-                        placeholder="Ex: EQ007"
-                        required>
-
-
-                    <label>Nome:</label>
-
-                    <input
-                        type="text"
-                        id="nomeEquipamento"
-                        placeholder="Ex: Teclado"
-                        required>
-
-
-                    <label>Situação:</label>
-
-                    <select id="situacaoEquipamento">
-
-                        <option value="Disponível">
-                            Disponível
-                        </option>
-
-                        <option value="Emprestado">
-                            Emprestado
-                        </option>
-
-                        <option value="Indisponível">
-                            Indisponível
-                        </option>
-
-                    </select>
-
-
-                    <button
-                        class="btn"
-                        type="submit">
-
-                        Cadastrar equipamento
-
-                    </button>
-
-                </form>
-
-            </div>
-
-        </section>
-
-
-        <!-- USUÁRIOS -->
-
-        <section id="usuarios" class="tela">
-
-            <h2>Usuários</h2>
-
-            <div class="card">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>ID</th>
-
-                            <th>Nome</th>
-
-                            <th>Status</th>
-
-                            <th>Ações</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="tabelaUsuarios"></tbody>
-
-                </table>
-
-            </div>
-
-
-            <!-- CADASTRO DE USUÁRIO -->
-
-            <div class="card">
-
-                <h3>Cadastrar usuário</h3>
-
-                <br>
-
-                <form onsubmit="cadastrarUsuario(event)">
-
-                    <label>ID do usuário:</label>
-
-                    <input
-                        type="text"
-                        id="idUsuario"
-                        placeholder="Ex: US005"
-                        required>
-
-
-                    <label>Nome:</label>
-
-                    <input
-                        type="text"
-                        id="nomeUsuario"
-                        placeholder="Nome do usuário"
-                        required>
-
-
-                    <label>Status:</label>
-
-                    <select id="statusUsuario">
-
-                        <option value="Ativo">
-                            Ativo
-                        </option>
-
-                        <option value="Inativo">
-                            Inativo
-                        </option>
-
-                    </select>
-
-
-                    <button
-                        class="btn"
-                        type="submit">
-
-                        Cadastrar usuário
-
-                    </button>
-
-                </form>
-
-            </div>
-
-        </section>
-
-
-        <!-- EMPRÉSTIMO -->
-
-        <section id="emprestimo" class="tela">
-
-            <h2>Registrar Empréstimo</h2>
-
-            <div class="card">
-
-                <form onsubmit="registrarEmprestimo(event)">
-
-                    <label>Equipamento:</label>
-
-                    <select
-                        id="equipamentoEmprestimo"
-                        required>
-                    </select>
-
-
-                    <label>Usuário:</label>
-
-                    <select
-                        id="usuarioEmprestimo"
-                        required>
-                    </select>
-
-
-                    <label>Data de retirada:</label>
-
-                    <input
-                        type="date"
-                        id="dataEmprestimo"
-                        required>
-
-
-                    <button
-                        class="btn"
-                        type="submit">
-
-                        Registrar empréstimo
-
-                    </button>
-
-                </form>
-
-            </div>
-
-        </section>
-
-
-        <!-- DEVOLUÇÃO -->
-
-        <section id="devolucao" class="tela">
-
-            <h2>Registrar Devolução</h2>
-
-            <div class="card">
-
-                <form onsubmit="registrarDevolucao(event)">
-
-                    <label>Equipamento:</label>
-
-                    <select
-                        id="equipamentoDevolucao"
-                        required>
-                    </select>
-
-
-                    <button
-                        class="btn"
-                        type="submit">
-
-                        Registrar devolução
-
-                    </button>
-
-                </form>
-
-            </div>
-
-        </section>
-
-
-        <!-- HISTÓRICO -->
-
-        <section id="historico" class="tela">
-
-            <h2>Histórico</h2>
-
-            <div class="card">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Equipamento</th>
-
-                            <th>Usuário</th>
-
-                            <th>Data</th>
-
-                            <th>Tipo</th>
-
-                            <th>Ação</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="tabelaHistorico"></tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-
-    </main>
-
-
-    <script>
-
-        /* =========================
-           EQUIPAMENTOS
-        ========================= */
-
-        let equipamentos = [
-
-            {
-                id: "EQ001",
-                nome: "Notebook",
-                situacao: "Disponível"
-            },
-
-            {
-                id: "EQ002",
-                nome: "Projetor",
-                situacao: "Disponível"
-            },
-
-            {
-                id: "EQ003",
-                nome: "Tablet",
-                situacao: "Emprestado"
-            },
-
-            {
-                id: "EQ004",
-                nome: "Caixa de som",
-                situacao: "Emprestado"
-            },
-
-            {
-                id: "EQ005",
-                nome: "Computador",
-                situacao: "Indisponível"
-            },
-
-            {
-                id: "EQ006",
-                nome: "Mouse",
-                situacao: "Disponível"
-            }
-
-        ];
-
-
-        /* =========================
-           USUÁRIOS
-        ========================= */
-
-        let usuarios = [
-
-            {
-                id: "US001",
-                nome: "Elany",
-                status: "Ativo"
-            },
-
-            {
-                id: "US002",
-                nome: "Rayca",
-                status: "Ativo"
-            },
-
-            {
-                id: "US003",
-                nome: "Maria Amélia",
-                status: "Ativo"
-            },
-
-            {
-                id: "US004",
-                nome: "Ana",
-                status: "Ativo"
-            }
-
-        ];
-
-
-        /* =========================
-           HISTÓRICO
-        ========================= */
-
-        let historico = [
-
-            {
-                equipamento: "Tablet",
-                usuario: "Elany",
-                data: "10/09/2026",
-                tipo: "Empréstimo"
-            },
-
-            {
-                equipamento: "Caixa de som",
-                usuario: "Rayca",
-                data: "11/09/2026",
-                tipo: "Empréstimo"
-            }
-
-        ];
-
-
-        /* =========================
-           TROCAR DE TELA
-        ========================= */
-
-        function mostrarTela(tela, botao) {
-
-            document
-                .querySelectorAll(".tela")
-                .forEach(function(elemento) {
-
-                    elemento.classList.remove("ativa");
-
-                });
-
-
-            document
-                .querySelectorAll("nav button")
-                .forEach(function(elemento) {
-
-                    elemento.classList.remove("ativo");
-
-                });
-
-
-            document
-                .getElementById(tela)
-                .classList.add("ativa");
-
-
-            botao.classList.add("ativo");
-
-
-            atualizarTabelas();
-
-        }
-
-
-        /* =========================
-           SITUAÇÃO
-        ========================= */
-
-        function classeSituacao(situacao) {
-
-            if (situacao === "Disponível") {
-
-                return "disponivel";
-
-            }
-
-
-            if (situacao === "Emprestado") {
-
-                return "emprestado";
-
-            }
-
-
-            return "indisponivel";
-
-        }
-
-
-        /* =========================
-           EQUIPAMENTOS
-        ========================= */
-
-        function atualizarEquipamentos() {
-
-            const tabela =
-                document.getElementById(
-                    "tabelaEquipamentos"
-                );
-
-
-            const pesquisa =
-                document
-                    .getElementById(
-                        "pesquisaEquipamento"
-                    )
-                    .value
-                    .toLowerCase();
-
-
-            tabela.innerHTML = "";
-
-
-            equipamentos
-                .filter(function(equipamento) {
-
-                    return (
-
-                        equipamento.nome
-                            .toLowerCase()
-                            .includes(pesquisa)
-
-                        ||
-
-                        equipamento.id
-                            .toLowerCase()
-                            .includes(pesquisa)
-
-                    );
-
-                })
-                .forEach(function(equipamento) {
-
-                    tabela.innerHTML += `
-
-                        <tr>
-
-                            <td>
-                                ${equipamento.id}
-                            </td>
-
-                            <td>
-                                ${equipamento.nome}
-                            </td>
-
-                            <td class="${classeSituacao(equipamento.situacao)}">
-                                ${equipamento.situacao}
-                            </td>
-
-                            <td>
-
-                                <button
-                                    class="btn-editar"
-                                    onclick="editarEquipamento('${equipamento.id}')">
-
-                                    Editar
-
-                                </button>
-
-                                <button
-                                    class="btn-excluir"
-                                    onclick="excluirEquipamento('${equipamento.id}')">
-
-                                    Excluir
-
-                                </button>
-
-                            </td>
-
-                        </tr>
-
-                    `;
-
-                });
-
-        }
-
-
-        /* =========================
-           USUÁRIOS
-        ========================= */
-
-        function atualizarUsuarios() {
-
-            const tabela =
-                document.getElementById(
-                    "tabelaUsuarios"
-                );
-
-
-            tabela.innerHTML = "";
-
-
-            usuarios.forEach(function(usuario) {
-
-                tabela.innerHTML += `
-
-                    <tr>
-
-                        <td>
-                            ${usuario.id}
-                        </td>
-
-                        <td>
-                            ${usuario.nome}
-                        </td>
-
-                        <td>
-                            ${usuario.status}
-                        </td>
-
-                        <td>
-
-                            <button
-                                class="btn-editar"
-                                onclick="editarUsuario('${usuario.id}')">
-
-                                Editar
-
-                            </button>
-
-                            <button
-                                class="btn-excluir"
-                                onclick="excluirUsuario('${usuario.id}')">
-
-                                Excluir
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                `;
-
-            });
-
-        }
-
-
-        /* =========================
-           SELECTS
-        ========================= */
-
-        function atualizarSelects() {
-
-            const equipamentoEmprestimo =
-                document.getElementById(
-                    "equipamentoEmprestimo"
-                );
-
-
-            const equipamentoDevolucao =
-                document.getElementById(
-                    "equipamentoDevolucao"
-                );
-
-
-            const usuarioEmprestimo =
-                document.getElementById(
-                    "usuarioEmprestimo"
-                );
-
-
-            equipamentoEmprestimo.innerHTML =
-                '<option value="">Selecione o equipamento</option>';
-
-
-            equipamentoDevolucao.innerHTML =
-                '<option value="">Selecione o equipamento</option>';
-
-
-            usuarioEmprestimo.innerHTML =
-                '<option value="">Selecione o usuário</option>';
-
-
-            equipamentos
-                .filter(function(equipamento) {
-
-                    return equipamento.situacao === "Disponível";
-
-                })
-                .forEach(function(equipamento) {
-
-                    equipamentoEmprestimo.innerHTML += `
-
-                        <option value="${equipamento.id}">
-
-                            ${equipamento.id} -
-                            ${equipamento.nome}
-
-                        </option>
-
-                    `;
-
-                });
-
-
-            equipamentos
-                .filter(function(equipamento) {
-
-                    return equipamento.situacao === "Emprestado";
-
-                })
-                .forEach(function(equipamento) {
-
-                    equipamentoDevolucao.innerHTML += `
-
-                        <option value="${equipamento.id}">
-
-                            ${equipamento.id} -
-                            ${equipamento.nome}
-
-                        </option>
-
-                    `;
-
-                });
-
-
-            usuarios
-                .filter(function(usuario) {
-
-                    return usuario.status === "Ativo";
-
-                })
-                .forEach(function(usuario) {
-
-                    usuarioEmprestimo.innerHTML += `
-
-                        <option value="${usuario.id}">
-
-                            ${usuario.id} -
-                            ${usuario.nome}
-
-                        </option>
-
-                    `;
-
-                });
-
-        }
-
-
-        /* =========================
-           HISTÓRICO
-        ========================= */
-
-        function atualizarHistorico() {
-
-            const tabela =
-                document.getElementById(
-                    "tabelaHistorico"
-                );
-
-
-            tabela.innerHTML = "";
-
-
-            historico.forEach(function(registro, index) {
-
-                tabela.innerHTML += `
-
-                    <tr>
-
-                        <td>
-                            ${registro.equipamento}
-                        </td>
-
-                        <td>
-                            ${registro.usuario}
-                        </td>
-
-                        <td>
-                            ${registro.data}
-                        </td>
-
-                        <td>
-                            ${registro.tipo}
-                        </td>
-
-                        <td>
-
-                            <button
-                                class="btn-excluir"
-                                onclick="excluirHistorico(${index})">
-
-                                Excluir
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                `;
-
-            });
-
-        }
-
-
-        /* =========================
-           ATUALIZAR TUDO
-        ========================= */
-
-        function atualizarTabelas() {
-
-            atualizarEquipamentos();
-
-            atualizarUsuarios();
-
-            atualizarSelects();
-
-            atualizarHistorico();
-
-        }
-
-
-        /* =========================
-           CADASTRAR EQUIPAMENTO
-        ========================= */
-
-        function cadastrarEquipamento(event) {
-
-            event.preventDefault();
-
-
-            const id =
-                document
-                    .getElementById("idEquipamento")
-                    .value
-                    .trim();
-
-
-            const nome =
-                document
-                    .getElementById("nomeEquipamento")
-                    .value
-                    .trim();
-
-
-            const situacao =
-                document
-                    .getElementById("situacaoEquipamento")
-                    .value;
-
-
-            const existe =
-                equipamentos.some(function(equipamento) {
-
-                    return equipamento.id === id;
-
-                });
-
-
-            if (existe) {
-
-                alert(
-                    "Já existe um equipamento com esse ID."
-                );
-
-                return;
-
-            }
-
-
-            equipamentos.push({
-
-                id: id,
-
-                nome: nome,
-
-                situacao: situacao
-
-            });
-
-
-            alert(
-                "Equipamento cadastrado com sucesso!"
-            );
-
-
-            event.target.reset();
-
-
-            atualizarTabelas();
-
-        }
-
-
-        /* =========================
-           EDITAR EQUIPAMENTO
-        ========================= */
-
-        function editarEquipamento(id) {
-
-            const equipamento =
-                equipamentos.find(function(equipamento) {
-
-                    return equipamento.id === id;
-
-                });
-
-
-            const novoNome =
-                prompt(
-                    "Digite o novo nome do equipamento:",
-                    equipamento.nome
-                );
-
-
-            if (
-                novoNome !== null &&
-                novoNome.trim() !== ""
-            ) {
-
-                equipamento.nome =
-                    novoNome.trim();
-
-
-                atualizarTabelas();
-
-            }
-
-        }
-
-
-        /* =========================
-           EXCLUIR EQUIPAMENTO
-        ========================= */
-
-        function excluirEquipamento(id) {
-
-            const equipamento =
-                equipamentos.find(function(equipamento) {
-
-                    return equipamento.id === id;
-
-                });
-
-
-            if (
-                equipamento.situacao === "Emprestado"
-            ) {
-
-                alert(
-                    "Não é possível excluir um equipamento que está emprestado."
-                );
-
-                return;
-
-            }
-
-
-            const confirmar =
-                confirm(
-                    "Tem certeza que deseja excluir este equipamento?"
-                );
-
-
-            if (confirmar) {
-
-                equipamentos =
-                    equipamentos.filter(function(equipamento) {
-
-                        return equipamento.id !== id;
-
-                    });
-
-
-                atualizarTabelas();
-
-            }
-
-        }
-
-
-        /* =========================
-           CADASTRAR USUÁRIO
-        ========================= */
-
-        function cadastrarUsuario(event) {
-
-            event.preventDefault();
-
-
-            const id =
-                document
-                    .getElementById("idUsuario")
-                    .value
-                    .trim();
-
-
-            const nome =
-                document
-                    .getElementById("nomeUsuario")
-                    .value
-                    .trim();
-
-
-            const status =
-                document
-                    .getElementById("statusUsuario")
-                    .value;
-
-
-            const existe =
-                usuarios.some(function(usuario) {
-
-                    return usuario.id === id;
-
-                });
-
-
-            if (existe) {
-
-                alert(
-                    "Já existe um usuário com esse ID."
-                );
-
-                return;
-
-            }
-
-
-            usuarios.push({
-
-                id: id,
-
-                nome: nome,
-
-                status: status
-
-            });
-
-
-            alert(
-                "Usuário cadastrado com sucesso!"
-            );
-
-
-            event.target.reset();
-
-
-            atualizarTabelas();
-
-        }
-
-
-        /* =========================
-           EDITAR USUÁRIO
-        ========================= */
-
-        function editarUsuario(id) {
-
-            const usuario =
-                usuarios.find(function(usuario) {
-
-                    return usuario.id === id;
-
-                });
-
-
-            const novoNome =
-                prompt(
-                    "Digite o novo nome do usuário:",
-                    usuario.nome
-                );
-
-
-            if (
-                novoNome !== null &&
-                novoNome.trim() !== ""
-            ) {
-
-                usuario.nome =
-                    novoNome.trim();
-
-
-                atualizarTabelas();
-
-            }
-
-        }
-
-
-        /* =========================
-           EXCLUIR USUÁRIO
-        ========================= */
-
-        function excluirUsuario(id) {
-
-            const confirmar =
-                confirm(
-                    "Tem certeza que deseja excluir este usuário?"
-                );
-
-
-            if (confirmar) {
-
-                usuarios =
-                    usuarios.filter(function(usuario) {
-
-                        return usuario.id !== id;
-
-                    });
-
-
-                atualizarTabelas();
-
-            }
-
-        }
-
-
-        /* =========================
-           EMPRÉSTIMO
-        ========================= */
-
-        function registrarEmprestimo(event) {
-
-            event.preventDefault();
-
-
-            const equipamentoId =
-                document
-                    .getElementById(
-                        "equipamentoEmprestimo"
-                    )
-                    .value;
-
-
-            const usuarioId =
-                document
-                    .getElementById(
-                        "usuarioEmprestimo"
-                    )
-                    .value;
-
-
-            const data =
-                document
-                    .getElementById(
-                        "dataEmprestimo"
-                    )
-                    .value;
-
-
-            const equipamento =
-                equipamentos.find(function(equipamento) {
-
-                    return equipamento.id === equipamentoId;
-
-                });
-
-
-            const usuario =
-                usuarios.find(function(usuario) {
-
-                    return usuario.id === usuarioId;
-
-                });
-
-
-            equipamento.situacao =
-                "Emprestado";
-
-
-            historico.push({
-
-                equipamento:
-                    equipamento.nome,
-
-                usuario:
-                    usuario.nome,
-
-                data:
-                    formatarData(data),
-
-                tipo:
-                    "Empréstimo"
-
-            });
-
-
-            alert(
-                "Empréstimo registrado com sucesso!"
-            );
-
-
-            event.target.reset();
-
-
-            atualizarTabelas();
-
-        }
-
-
-        /* =========================
-           DEVOLUÇÃO
-        ========================= */
-
-        function registrarDevolucao(event) {
-
-            event.preventDefault();
-
-
-            const equipamentoId =
-                document
-                    .getElementById(
-                        "equipamentoDevolucao"
-                    )
-                    .value;
-
-
-            const equipamento =
-                equipamentos.find(function(equipamento) {
-
-                    return equipamento.id === equipamentoId;
-
-                });
-
-
-            equipamento.situacao =
-                "Disponível";
-
-
-            historico.push({
-
-                equipamento:
-                    equipamento.nome,
-
-                usuario:
-                    "Sistema",
-
-                data:
-                    formatarDataHoje(),
-
-                tipo:
-                    "Devolução"
-
-            });
-
-
-            alert(
-                "Devolução registrada com sucesso!"
-            );
-
-
-            event.target.reset();
-
-
-            atualizarTabelas();
-
-        }
-
-
-        /* =========================
-           EXCLUIR HISTÓRICO
-        ========================= */
-
-        function excluirHistorico(index) {
-
-            const confirmar =
-                confirm(
-                    "Tem certeza que deseja excluir este registro?"
-                );
-
-
-            if (confirmar) {
-
-                historico.splice(index, 1);
-
-
-                atualizarTabelas();
-
-            }
-
-        }
-
-
-        /* =========================
-           FORMATAR DATA
-        ========================= */
-
-        function formatarData(data) {
-
-            const partes =
-                data.split("-");
-
-
-            return (
-                partes[2] +
-                "/" +
-                partes[1] +
-                "/" +
-                partes[0]
-            );
-
-        }
-
-
-        /* =========================
-           DATA DE HOJE
-        ========================= */
-
-        function formatarDataHoje() {
-
-            const hoje =
-                new Date();
-
-
-            const dia =
-                String(
-                    hoje.getDate()
-                ).padStart(2, "0");
-
-
-            const mes =
-                String(
-                    hoje.getMonth() + 1
-                ).padStart(2, "0");
-
-
-            const ano =
-                hoje.getFullYear();
-
-
-            return (
-                dia +
-                "/" +
-                mes +
-                "/" +
-                ano
-            );
-
-        }
-
-
-        /* =========================
-           INICIAR SISTEMA
-        ========================= */
-
-        atualizarTabelas();
-
-    </script>
-
-</body>
-
-</html>
+      * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fa;
+    color: #34495e;
+    line-height: 1.5;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+header {
+    background: #1f4e79;
+    color: white;
+    text-align: center;
+    padding: 28px 20px;
+    box-shadow: 0 3px 10px rgba(31, 78, 121, 0.18);
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+}
+
+header p {
+    font-size: 15px;
+    opacity: 0.95;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+nav {
+    background: white;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+nav button {
+    background: #1f4e79;
+    color: white;
+    border: none;
+    padding: 11px 19px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+nav button:hover {
+    background: #285f91;
+    transform: translateY(-1px);
+}
+
+/* BOTÃO DA TELA ATUAL */
+
+nav button.ativo {
+    background: #a9d8f5;
+    color: #174a70;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(31, 78, 121, 0.18);
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+main {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 22px;
+}
+
+.tela {
+    display: none;
+}
+
+.tela.ativa {
+    display: block;
+}
+
+h2 {
+    color: #1f4e79;
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #1f4e79;
+    font-size: 20px;
+}
+
+
+/* =========================
+   CARDS / QUADRADOS
+========================= */
+
+.card {
+    background: white;
+    padding: 24px;
+    border-radius: 14px;
+    border: 1px solid #e6edf3;
+    box-shadow: 0 4px 14px rgba(31, 78, 121, 0.08);
+    margin-bottom: 22px;
+}
+
+.card:hover {
+    box-shadow: 0 6px 18px rgba(31, 78, 121, 0.11);
+}
+
+
+/* =========================
+   PESQUISA
+========================= */
+
+.pesquisa {
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.pesquisa input {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid #cbd9e5;
+    border-radius: 9px;
+    font-size: 14px;
+    background: #fbfdff;
+    transition: 0.2s;
+}
+
+.pesquisa input:focus {
+    outline: none;
+    border-color: #8ecae6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(142, 202, 230, 0.18);
+}
+
+
+/* =========================
+   TABELAS
+========================= */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #e1e9f0;
+    border-radius: 10px;
+}
+
+th {
+    background: #1f4e79;
+    color: white;
+    padding: 13px 14px;
+    text-align: left;
+    font-size: 14px;
+}
+
+td {
+    padding: 13px 14px;
+    border-bottom: 1px solid #edf1f5;
+    font-size: 14px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background: #f5faff;
+}
+
+
+/* =========================
+   SITUAÇÕES
+========================= */
+
+.disponivel {
+    color: #238636;
+    font-weight: bold;
+}
+
+.emprestado {
+    color: #d97706;
+    font-weight: bold;
+}
+
+.indisponivel {
+    color: #c62828;
+    font-weight: bold;
+}
+
+
+/* =========================
+   FORMULÁRIOS
+========================= */
+
+form {
+    display: grid;
+    gap: 11px;
+}
+
+label {
+    font-weight: 600;
+    color: #1f4e79;
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid #cbd9e5;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fbfdff;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #8ecae6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(142, 202, 230, 0.18);
+}
+
+
+/* =========================
+   BOTÃO PRINCIPAL
+========================= */
+
+.btn {
+    background: #1f4e79;
+    color: white;
+    border: none;
+    padding: 12px 19px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 6px;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #285f91;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   BOTÃO EDITAR
+========================= */
+
+.btn-editar {
+    background: #b9dcf5;
+    color: #174a70;
+    border: none;
+    padding: 8px 13px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: 0.2s;
+}
+
+.btn-editar:hover {
+    background: #9fd3f2;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   BOTÃO EXCLUIR
+========================= */
+
+.btn-excluir {
+    background: #d4eafb;
+    color: #174a70;
+    border: none;
+    padding: 8px 13px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-excluir:hover {
+    background: #b9dcf5;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   MENSAGEM
+========================= */
+
+.mensagem {
+    margin-top: 10px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #e8f4fc;
+    color: #174a70;
+    border: 1px solid #cce6f5;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 700px) {
+
+    main {
+        padding: 0 12px;
+        margin-top: 25px;
+    }
+
+    header {
+        padding: 23px 15px;
+    }
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    header p {
+        font-size: 13px;
+    }
+
+    nav {
+        padding: 12px;
+        gap: 7px;
+    }
+
+    nav button {
+        padding: 9px 13px;
+        font-size: 13px;
+    }
+
+    .card {
+        padding: 17px;
+        border-radius: 12px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th,
+    td {
+        padding: 9px;
+    }
+
+    .btn-editar,
+    .btn-excluir {
+        margin: 3px 2px;
+    }
+}
