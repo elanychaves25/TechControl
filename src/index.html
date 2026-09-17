@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+          <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -21,12 +22,12 @@
         header {
             background: #1f4e79;
             color: white;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
         }
 
         header h1 {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         nav {
@@ -88,7 +89,8 @@
             gap: 12px;
         }
 
-        input, select {
+        input,
+        select {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 6px;
@@ -114,7 +116,8 @@
             margin-top: 15px;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
@@ -178,4 +181,567 @@
 
 <nav>
     <button onclick="mostrarTela('inicio')">Início</button>
-    <button onclick="mostrarTela('
+    <button onclick="mostrarTela('equipamentos')">Equipamentos</button>
+    <button onclick="mostrarTela('usuarios')">Usuários</button>
+    <button onclick="mostrarTela('emprestimo')">Empréstimo</button>
+    <button onclick="mostrarTela('devolucao')">Devolução</button>
+    <button onclick="mostrarTela('historico')">Histórico</button>
+</nav>
+
+<main>
+
+    <!-- INÍCIO -->
+    <section id="inicio" class="tela ativa">
+        <div class="card inicio">
+            <h2>Bem-vindo ao TechControl!</h2>
+
+            <p>
+                O TechControl é um sistema para controlar o
+                empréstimo e a devolução de equipamentos escolares.
+            </p>
+
+            <p>
+                Utilize o menu acima para cadastrar equipamentos,
+                consultar usuários, realizar empréstimos, registrar
+                devoluções e consultar o histórico.
+            </p>
+        </div>
+    </section>
+
+    <!-- EQUIPAMENTOS -->
+    <section id="equipamentos" class="tela">
+
+        <div class="card">
+            <h2>Equipamentos</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Equipamento</th>
+                        <th>Situação</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelaEquipamentos"></tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Cadastrar equipamento</h2>
+
+            <form onsubmit="cadastrarEquipamento(event)">
+                <input
+                    type="text"
+                    id="nomeEquipamento"
+                    placeholder="Nome do equipamento"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="idEquipamento"
+                    placeholder="Identificação (ex.: EQ006)"
+                    required
+                >
+
+                <select id="situacaoEquipamento">
+                    <option value="Disponível">Disponível</option>
+                    <option value="Indisponível">Indisponível</option>
+                </select>
+
+                <button class="btn" type="submit">
+                    Cadastrar equipamento
+                </button>
+            </form>
+
+            <div id="mensagemEquipamento"></div>
+        </div>
+
+    </section>
+
+    <!-- USUÁRIOS -->
+    <section id="usuarios" class="tela">
+
+        <div class="card">
+            <h2>Usuários cadastrados</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelaUsuarios"></tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Cadastrar usuário</h2>
+
+            <form onsubmit="cadastrarUsuario(event)">
+
+                <input
+                    type="text"
+                    id="nomeUsuario"
+                    placeholder="Nome do usuário"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="idUsuario"
+                    placeholder="Identificação (ex.: US004)"
+                    required
+                >
+
+                <button class="btn" type="submit">
+                    Cadastrar usuário
+                </button>
+
+            </form>
+
+            <div id="mensagemUsuario"></div>
+        </div>
+
+    </section>
+
+    <!-- EMPRÉSTIMO -->
+    <section id="emprestimo" class="tela">
+
+        <div class="card">
+            <h2>Registrar empréstimo</h2>
+
+            <form onsubmit="registrarEmprestimo(event)">
+
+                <label>Equipamento:</label>
+
+                <select id="equipamentoEmprestimo" required></select>
+
+                <label>Usuário responsável:</label>
+
+                <select id="usuarioEmprestimo" required></select>
+
+                <label>Data de retirada:</label>
+
+                <input
+                    type="date"
+                    id="dataEmprestimo"
+                    required
+                >
+
+                <button class="btn" type="submit">
+                    Registrar empréstimo
+                </button>
+
+            </form>
+
+            <div id="mensagemEmprestimo"></div>
+        </div>
+
+    </section>
+
+    <!-- DEVOLUÇÃO -->
+    <section id="devolucao" class="tela">
+
+        <div class="card">
+            <h2>Registrar devolução</h2>
+
+            <form onsubmit="registrarDevolucao(event)">
+
+                <label>Equipamento emprestado:</label>
+
+                <select id="equipamentoDevolucao" required></select>
+
+                <button class="btn" type="submit">
+                    Registrar devolução
+                </button>
+
+            </form>
+
+            <div id="mensagemDevolucao"></div>
+        </div>
+
+    </section>
+
+    <!-- HISTÓRICO -->
+    <section id="historico" class="tela">
+
+        <div class="card">
+            <h2>Histórico de empréstimos e devoluções</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Equipamento</th>
+                        <th>Usuário</th>
+                        <th>Data</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelaHistorico"></tbody>
+            </table>
+        </div>
+
+    </section>
+
+</main>
+
+<script>
+
+    let equipamentos = [
+        {
+            id: "EQ001",
+            nome: "Notebook",
+            situacao: "Disponível"
+        },
+        {
+            id: "EQ002",
+            nome: "Projetor",
+            situacao: "Disponível"
+        },
+        {
+            id: "EQ003",
+            nome: "Tablet",
+            situacao: "Emprestado"
+        },
+        {
+            id: "EQ004",
+            nome: "Caixa de som",
+            situacao: "Emprestado"
+        },
+        {
+            id: "EQ005",
+            nome: "Computador",
+            situacao: "Indisponível"
+        }
+    ];
+
+    let usuarios = [
+        {
+            id: "US001",
+            nome: "Elany",
+            status: "Ativo"
+        },
+        {
+            id: "US002",
+            nome: "Rayca",
+            status: "Ativo"
+        },
+        {
+            id: "US003",
+            nome: "Maria Amélia",
+            status: "Ativo"
+        }
+    ];
+
+    let historico = [
+        {
+            equipamento: "Tablet",
+            usuario: "Elany",
+            data: "10/09/2026",
+            acao: "Empréstimo"
+        },
+        {
+            equipamento: "Caixa de som",
+            usuario: "Rayca",
+            data: "11/09/2026",
+            acao: "Empréstimo"
+        }
+    ];
+
+    function mostrarTela(nome) {
+
+        const telas = document.querySelectorAll(".tela");
+
+        telas.forEach(function(tela) {
+            tela.classList.remove("ativa");
+        });
+
+        document
+            .getElementById(nome)
+            .classList.add("ativa");
+
+        atualizarTabelas();
+    }
+
+    function classeSituacao(situacao) {
+
+        if (situacao === "Disponível") {
+            return "disponivel";
+        }
+
+        if (situacao === "Emprestado") {
+            return "emprestado";
+        }
+
+        return "indisponivel";
+    }
+
+    function atualizarEquipamentos() {
+
+        const tabela =
+            document.getElementById("tabelaEquipamentos");
+
+        tabela.innerHTML = "";
+
+        equipamentos.forEach(function(equipamento) {
+
+            tabela.innerHTML += `
+                <tr>
+                    <td>${equipamento.id}</td>
+                    <td>${equipamento.nome}</td>
+                    <td class="${classeSituacao(equipamento.situacao)}">
+                        ${equipamento.situacao}
+                    </td>
+                </tr>
+            `;
+        });
+
+        const selectEmprestimo =
+            document.getElementById("equipamentoEmprestimo");
+
+        selectEmprestimo.innerHTML =
+            '<option value="">Selecione um equipamento</option>';
+
+        equipamentos.forEach(function(equipamento) {
+
+            if (equipamento.situacao === "Disponível") {
+
+                selectEmprestimo.innerHTML += `
+                    <option value="${equipamento.id}">
+                        ${equipamento.id} - ${equipamento.nome}
+                    </option>
+                `;
+            }
+        });
+
+        const selectDevolucao =
+            document.getElementById("equipamentoDevolucao");
+
+        selectDevolucao.innerHTML =
+            '<option value="">Selecione um equipamento</option>';
+
+        equipamentos.forEach(function(equipamento) {
+
+            if (equipamento.situacao === "Emprestado") {
+
+                selectDevolucao.innerHTML += `
+                    <option value="${equipamento.id}">
+                        ${equipamento.id} - ${equipamento.nome}
+                    </option>
+                `;
+            }
+        });
+    }
+
+    function atualizarUsuarios() {
+
+        const tabela =
+            document.getElementById("tabelaUsuarios");
+
+        tabela.innerHTML = "";
+
+        usuarios.forEach(function(usuario) {
+
+            tabela.innerHTML += `
+                <tr>
+                    <td>${usuario.id}</td>
+                    <td>${usuario.nome}</td>
+                    <td>${usuario.status}</td>
+                </tr>
+            `;
+        });
+
+        const select =
+            document.getElementById("usuarioEmprestimo");
+
+        select.innerHTML =
+            '<option value="">Selecione um usuário</option>';
+
+        usuarios.forEach(function(usuario) {
+
+            if (usuario.status === "Ativo") {
+
+                select.innerHTML += `
+                    <option value="${usuario.id}">
+                        ${usuario.id} - ${usuario.nome}
+                    </option>
+                `;
+            }
+        });
+    }
+
+    function atualizarHistorico() {
+
+        const tabela =
+            document.getElementById("tabelaHistorico");
+
+        tabela.innerHTML = "";
+
+        historico.forEach(function(registro) {
+
+            tabela.innerHTML += `
+                <tr>
+                    <td>${registro.equipamento}</td>
+                    <td>${registro.usuario}</td>
+                    <td>${registro.data}</td>
+                    <td>${registro.acao}</td>
+                </tr>
+            `;
+        });
+    }
+
+    function atualizarTabelas() {
+
+        atualizarEquipamentos();
+        atualizarUsuarios();
+        atualizarHistorico();
+    }
+
+    function cadastrarEquipamento(event) {
+
+        event.preventDefault();
+
+        const nome =
+            document.getElementById("nomeEquipamento").value;
+
+        const id =
+            document.getElementById("idEquipamento").value;
+
+        const situacao =
+            document.getElementById("situacaoEquipamento").value;
+
+        equipamentos.push({
+            id: id,
+            nome: nome,
+            situacao: situacao
+        });
+
+        document.getElementById("mensagemEquipamento").innerHTML =
+            "Equipamento cadastrado com sucesso!";
+
+        event.target.reset();
+
+        atualizarTabelas();
+    }
+
+    function cadastrarUsuario(event) {
+
+        event.preventDefault();
+
+        const nome =
+            document.getElementById("nomeUsuario").value;
+
+        const id =
+            document.getElementById("idUsuario").value;
+
+        usuarios.push({
+            id: id,
+            nome: nome,
+            status: "Ativo"
+        });
+
+        document.getElementById("mensagemUsuario").innerHTML =
+            "Usuário cadastrado com sucesso!";
+
+        event.target.reset();
+
+        atualizarTabelas();
+    }
+
+    function registrarEmprestimo(event) {
+
+        event.preventDefault();
+
+        const idEquipamento =
+            document.getElementById("equipamentoEmprestimo").value;
+
+        const idUsuario =
+            document.getElementById("usuarioEmprestimo").value;
+
+        const data =
+            document.getElementById("dataEmprestimo").value;
+
+        const equipamento =
+            equipamentos.find(function(item) {
+                return item.id === idEquipamento;
+            });
+
+        const usuario =
+            usuarios.find(function(item) {
+                return item.id === idUsuario;
+            });
+
+        if (!equipamento || !usuario) {
+            return;
+        }
+
+        if (equipamento.situacao !== "Disponível") {
+
+            document.getElementById("mensagemEmprestimo").innerHTML =
+                "Esse equipamento não está disponível.";
+
+            return;
+        }
+
+        equipamento.situacao = "Emprestado";
+
+        historico.push({
+            equipamento: equipamento.nome,
+            usuario: usuario.nome,
+            data: data,
+            acao: "Empréstimo"
+        });
+
+        document.getElementById("mensagemEmprestimo").innerHTML =
+            "Empréstimo registrado com sucesso!";
+
+        event.target.reset();
+
+        atualizarTabelas();
+    }
+
+    function registrarDevolucao(event) {
+
+        event.preventDefault();
+
+        const idEquipamento =
+            document.getElementById("equipamentoDevolucao").value;
+
+        const equipamento =
+            equipamentos.find(function(item) {
+                return item.id === idEquipamento;
+            });
+
+        if (!equipamento) {
+            return;
+        }
+
+        equipamento.situacao = "Disponível";
+
+        historico.push({
+            equipamento: equipamento.nome,
+            usuario: "Sistema",
+            data: new Date().toLocaleDateString("pt-BR"),
+            acao: "Devolução"
+        });
+
+        document.getElementById("mensagemDevolucao").innerHTML =
+            "Devolução registrada com sucesso!";
+
+        event.target.reset();
+
+        atualizarTabelas();
+    }
+
+    atualizarTabelas();
+
+</script>
+
+</body>
+</html>
