@@ -1,8 +1,14 @@
-<!DOCTYPE html>
+
+    
+        
+       
+        <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>TechControl</title>
 
     <style>
@@ -15,8 +21,10 @@
 
         body {
             background: #f4f6f8;
-            color: #222;
+            color: #333;
         }
+
+        /* CABEÇALHO */
 
         header {
             background: #1f4e79;
@@ -29,28 +37,44 @@
             margin-bottom: 8px;
         }
 
+        /* MENU */
+
         nav {
             background: white;
+            padding: 15px;
             display: flex;
             justify-content: center;
             gap: 10px;
-            padding: 15px;
             flex-wrap: wrap;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         nav button {
-            border: none;
             background: #1f4e79;
             color: white;
-            padding: 10px 15px;
+            border: none;
+            padding: 10px 18px;
             border-radius: 6px;
             cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
         }
 
         nav button:hover {
             background: #163a5c;
         }
+
+        /* BOTÃO DA PÁGINA ATUAL */
+
+        nav button.ativo {
+            background: #9fd3f2;
+            color: #174a70;
+            font-weight: bold;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.20);
+            transform: translateY(-1px);
+        }
+
+        /* CONTEÚDO */
 
         main {
             max-width: 1100px;
@@ -66,1103 +90,1624 @@
             display: block;
         }
 
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
         h2 {
             color: #1f4e79;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         h3 {
-            margin-bottom: 10px;
+            color: #1f4e79;
         }
+
+        /* CARD */
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+
+        /* TABELAS */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 15px;
+        }
+
+        th {
+            background: #1f4e79;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f1f7fc;
+        }
+
+        /* SITUAÇÕES */
+
+        .disponivel {
+            color: #238636;
+            font-weight: bold;
+        }
+
+        .emprestado {
+            color: #d97706;
+            font-weight: bold;
+        }
+
+        .indisponivel {
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        /* FORMULÁRIOS */
 
         form {
             display: grid;
             gap: 12px;
         }
 
+        label {
+            font-weight: bold;
+            color: #1f4e79;
+        }
+
         input,
         select {
             padding: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #bbb;
             border-radius: 6px;
-            width: 100%;
+            font-size: 14px;
         }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #6bb6e8;
+        }
+
+        /* BOTÃO PRINCIPAL */
 
         .btn {
             background: #1f4e79;
             color: white;
             border: none;
-            padding: 11px;
+            padding: 11px 18px;
             border-radius: 6px;
             cursor: pointer;
+            font-weight: bold;
         }
 
         .btn:hover {
             background: #163a5c;
         }
 
+        /* BOTÃO EDITAR - AZUL BEBÊ */
+
         .btn-editar {
-            background: #d68910;
-        }
-
-        .btn-excluir {
-            background: #c0392b;
-        }
-
-        .btn-cancelar {
-            background: #777;
-        }
-
-        .btn-editar,
-        .btn-excluir,
-        .btn-cancelar {
-            padding: 7px 10px;
+            background: #b9dcf5;
+            color: #174a70;
             border: none;
-            color: white;
-            border-radius: 5px;
+            padding: 7px 12px;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: bold;
             margin-right: 5px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+        .btn-editar:hover {
+            background: #9fd3f2;
         }
 
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
+        /* BOTÃO EXCLUIR - AZUL CLARINHO */
 
-        th {
-            background: #1f4e79;
-            color: white;
-        }
-
-        .disponivel {
-            color: green;
+        .btn-excluir {
+            background: #d4eafb;
+            color: #174a70;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 6px;
+            cursor: pointer;
             font-weight: bold;
         }
 
-        .emprestado {
-            color: #d68910;
-            font-weight: bold;
+        .btn-excluir:hover {
+            background: #b9dcf5;
         }
 
-        .indisponivel {
-            color: #c0392b;
-            font-weight: bold;
-        }
-
-        .inicio {
-            text-align: center;
-            padding: 25px;
-        }
-
-        .inicio p {
-            margin: 15px 0;
-            line-height: 1.6;
-        }
-
-        .resumo {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .resumo-card {
-            background: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .resumo-card h3 {
-            color: #1f4e79;
-            margin-bottom: 10px;
-        }
-
-        .numero {
-            font-size: 28px;
-            font-weight: bold;
-        }
+        /* PESQUISA */
 
         .pesquisa {
             margin-bottom: 15px;
         }
 
+        .pesquisa input {
+            width: 100%;
+        }
+
+        /* MENSAGEM */
+
         .mensagem {
-            margin-top: 15px;
+            margin-top: 10px;
             padding: 10px;
             border-radius: 6px;
-            background: #eaf2f8;
+            background: #e8f4fc;
+            color: #174a70;
         }
 
-        .acoes {
-            min-width: 150px;
-        }
+        /* RESPONSIVO */
 
-        @media (max-width: 800px) {
-            .resumo {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+        @media (max-width: 700px) {
 
-        @media (max-width: 600px) {
-            .resumo {
-                grid-template-columns: 1fr;
+            main {
+                padding: 0 10px;
             }
 
             table {
                 font-size: 13px;
             }
 
-            nav {
-                flex-direction: column;
+            th,
+            td {
+                padding: 8px;
             }
 
-            .acoes {
-                min-width: 120px;
+            .btn-editar,
+            .btn-excluir {
+                display: block;
+                margin: 3px 0;
+                width: 100%;
             }
+
         }
     </style>
 </head>
 
 <body>
 
-<header>
-    <h1>TechControl</h1>
-    <p>Sistema de Controle de Empréstimo de Equipamentos Escolares</p>
-</header>
+    <!-- CABEÇALHO -->
 
-<nav>
-    <button onclick="mostrarTela('inicio')">Início</button>
-    <button onclick="mostrarTela('equipamentos')">Equipamentos</button>
-    <button onclick="mostrarTela('usuarios')">Usuários</button>
-    <button onclick="mostrarTela('emprestimo')">Empréstimo</button>
-    <button onclick="mostrarTela('devolucao')">Devolução</button>
-    <button onclick="mostrarTela('historico')">Histórico</button>
-</nav>
+    <header>
 
-<main>
+        <h1>TechControl</h1>
 
-    <!-- INÍCIO -->
-    <section id="inicio" class="tela ativa">
+        <p>
+            Sistema de Controle de Empréstimo de Equipamentos Escolares
+        </p>
 
-        <div class="card inicio">
-            <h2>Bem-vindo ao TechControl!</h2>
+    </header>
 
-            <p>
-                Sistema desenvolvido para controlar o empréstimo
-                e a devolução de equipamentos escolares.
-            </p>
 
-            <p>
-                Utilize o menu acima para acessar as funções do sistema.
-            </p>
-        </div>
+    <!-- MENU -->
 
-        <div class="resumo">
+    <nav>
 
-            <div class="resumo-card">
-                <h3>Equipamentos</h3>
-                <div class="numero" id="totalEquipamentos">0</div>
+        <button
+            id="btn-inicio"
+            class="ativo"
+            onclick="mostrarTela('inicio', this)">
+            Início
+        </button>
+
+        <button
+            id="btn-equipamentos"
+            onclick="mostrarTela('equipamentos', this)">
+            Equipamentos
+        </button>
+
+        <button
+            id="btn-usuarios"
+            onclick="mostrarTela('usuarios', this)">
+            Usuários
+        </button>
+
+        <button
+            id="btn-emprestimo"
+            onclick="mostrarTela('emprestimo', this)">
+            Empréstimo
+        </button>
+
+        <button
+            id="btn-devolucao"
+            onclick="mostrarTela('devolucao', this)">
+            Devolução
+        </button>
+
+        <button
+            id="btn-historico"
+            onclick="mostrarTela('historico', this)">
+            Histórico
+        </button>
+
+    </nav>
+
+
+    <main>
+
+
+        <!-- INÍCIO -->
+
+        <section id="inicio" class="tela ativa">
+
+            <div class="card">
+
+                <h2>Bem-vindo ao TechControl!</h2>
+
+                <p>
+                    Sistema para controle de empréstimos e devoluções
+                    de equipamentos escolares.
+                </p>
+
+                <br>
+
+                <p>
+                    Utilize o menu acima para acessar as funções
+                    do sistema.
+                </p>
+
             </div>
 
-            <div class="resumo-card">
-                <h3>Disponíveis</h3>
-                <div class="numero" id="totalDisponiveis">0</div>
-            </div>
+        </section>
 
-            <div class="resumo-card">
-                <h3>Emprestados</h3>
-                <div class="numero" id="totalEmprestados">0</div>
-            </div>
 
-            <div class="resumo-card">
-                <h3>Indisponíveis</h3>
-                <div class="numero" id="totalIndisponiveis">0</div>
-            </div>
+        <!-- EQUIPAMENTOS -->
 
-            <div class="resumo-card">
-                <h3>Usuários</h3>
-                <div class="numero" id="totalUsuarios">0</div>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- EQUIPAMENTOS -->
-    <section id="equipamentos" class="tela">
-
-        <div class="card">
+        <section id="equipamentos" class="tela">
 
             <h2>Equipamentos</h2>
 
-            <input
-                type="text"
-                id="pesquisaEquipamento"
-                class="pesquisa"
-                placeholder="Pesquisar por nome ou identificação..."
-                oninput="atualizarEquipamentos()"
-            >
+            <div class="card">
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Equipamento</th>
-                        <th>Situação</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
+                <!-- PESQUISA -->
 
-                <tbody id="tabelaEquipamentos"></tbody>
-            </table>
+                <div class="pesquisa">
 
-        </div>
+                    <input
+                        type="text"
+                        id="pesquisaEquipamento"
+                        placeholder="Pesquisar por nome ou código..."
+                        onkeyup="atualizarEquipamentos()">
 
-        <div class="card">
+                </div>
 
-            <h2>Cadastrar equipamento</h2>
 
-            <form onsubmit="cadastrarEquipamento(event)">
+                <!-- TABELA -->
 
-                <input
-                    type="text"
-                    id="nomeEquipamento"
-                    placeholder="Nome do equipamento"
-                    required
-                >
+                <table>
 
-                <input
-                    type="text"
-                    id="idEquipamento"
-                    placeholder="Identificação (ex.: EQ006)"
-                    required
-                >
+                    <thead>
 
-                <select id="situacaoEquipamento">
-                    <option value="Disponível">Disponível</option>
-                    <option value="Indisponível">Indisponível</option>
-                </select>
+                        <tr>
 
-                <button class="btn" type="submit">
-                    Cadastrar equipamento
-                </button>
+                            <th>ID</th>
 
-            </form>
+                            <th>Nome</th>
 
-            <div id="mensagemEquipamento"></div>
+                            <th>Situação</th>
 
-        </div>
+                            <th>Ações</th>
 
-    </section>
+                        </tr>
 
-    <!-- USUÁRIOS -->
-    <section id="usuarios" class="tela">
+                    </thead>
 
-        <div class="card">
+                    <tbody id="tabelaEquipamentos"></tbody>
 
-            <h2>Usuários cadastrados</h2>
+                </table>
 
-            <table>
+            </div>
 
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Status</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
 
-                <tbody id="tabelaUsuarios"></tbody>
+            <!-- CADASTRO -->
 
-            </table>
+            <div class="card">
 
-        </div>
+                <h3>Cadastrar equipamento</h3>
 
-        <div class="card">
+                <br>
 
-            <h2>Cadastrar usuário</h2>
+                <form onsubmit="cadastrarEquipamento(event)">
 
-            <form onsubmit="cadastrarUsuario(event)">
+                    <label>ID do equipamento:</label>
 
-                <input
-                    type="text"
-                    id="nomeUsuario"
-                    placeholder="Nome do usuário"
-                    required
-                >
+                    <input
+                        type="text"
+                        id="idEquipamento"
+                        placeholder="Ex: EQ007"
+                        required>
 
-                <input
-                    type="text"
-                    id="idUsuario"
-                    placeholder="Identificação (ex.: US004)"
-                    required
-                >
 
-                <button class="btn" type="submit">
-                    Cadastrar usuário
-                </button>
+                    <label>Nome:</label>
 
-            </form>
+                    <input
+                        type="text"
+                        id="nomeEquipamento"
+                        placeholder="Ex: Teclado"
+                        required>
 
-            <div id="mensagemUsuario"></div>
 
-        </div>
+                    <label>Situação:</label>
 
-    </section>
+                    <select id="situacaoEquipamento">
 
-    <!-- EMPRÉSTIMO -->
-    <section id="emprestimo" class="tela">
+                        <option value="Disponível">
+                            Disponível
+                        </option>
 
-        <div class="card">
+                        <option value="Emprestado">
+                            Emprestado
+                        </option>
 
-            <h2>Registrar empréstimo</h2>
+                        <option value="Indisponível">
+                            Indisponível
+                        </option>
 
-            <form onsubmit="registrarEmprestimo(event)">
+                    </select>
 
-                <label>Equipamento:</label>
 
-                <select id="equipamentoEmprestimo" required></select>
+                    <button
+                        class="btn"
+                        type="submit">
 
-                <label>Usuário responsável:</label>
+                        Cadastrar equipamento
 
-                <select id="usuarioEmprestimo" required></select>
+                    </button>
 
-                <label>Data de retirada:</label>
+                </form>
 
-                <input
-                    type="date"
-                    id="dataEmprestimo"
-                    required
-                >
+            </div>
 
-                <button class="btn" type="submit">
-                    Registrar empréstimo
-                </button>
+        </section>
 
-            </form>
 
-            <div id="mensagemEmprestimo"></div>
+        <!-- USUÁRIOS -->
 
-        </div>
+        <section id="usuarios" class="tela">
 
-    </section>
+            <h2>Usuários</h2>
 
-    <!-- DEVOLUÇÃO -->
-    <section id="devolucao" class="tela">
+            <div class="card">
 
-        <div class="card">
+                <table>
 
-            <h2>Registrar devolução</h2>
+                    <thead>
 
-            <form onsubmit="registrarDevolucao(event)">
+                        <tr>
 
-                <label>Equipamento emprestado:</label>
+                            <th>ID</th>
 
-                <select id="equipamentoDevolucao" required></select>
+                            <th>Nome</th>
 
-                <button class="btn" type="submit">
-                    Registrar devolução
-                </button>
+                            <th>Status</th>
 
-            </form>
+                            <th>Ações</th>
 
-            <div id="mensagemDevolucao"></div>
+                        </tr>
 
-        </div>
+                    </thead>
 
-    </section>
+                    <tbody id="tabelaUsuarios"></tbody>
 
-    <!-- HISTÓRICO -->
-    <section id="historico" class="tela">
+                </table>
 
-        <div class="card">
+            </div>
 
-            <h2>Histórico de empréstimos e devoluções</h2>
 
-            <table>
+            <!-- CADASTRO DE USUÁRIO -->
 
-                <thead>
-                    <tr>
-                        <th>Equipamento</th>
-                        <th>Usuário</th>
-                        <th>Data</th>
-                        <th>Ação</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
+            <div class="card">
 
-                <tbody id="tabelaHistorico"></tbody>
+                <h3>Cadastrar usuário</h3>
 
-            </table>
+                <br>
 
-        </div>
+                <form onsubmit="cadastrarUsuario(event)">
 
-    </section>
+                    <label>ID do usuário:</label>
 
-</main>
+                    <input
+                        type="text"
+                        id="idUsuario"
+                        placeholder="Ex: US005"
+                        required>
 
-<script>
 
-    let equipamentos = [
-        {
-            id: "EQ001",
-            nome: "Notebook",
-            situacao: "Disponível"
-        },
-        {
-            id: "EQ002",
-            nome: "Projetor",
-            situacao: "Disponível"
-        },
-        {
-            id: "EQ003",
-            nome: "Tablet",
-            situacao: "Emprestado"
-        },
-        {
-            id: "EQ004",
-            nome: "Caixa de som",
-            situacao: "Emprestado"
-        },
-        {
-            id: "EQ005",
-            nome: "Computador",
-            situacao: "Indisponível"
-        },
-        {
-            id: "EQ006",
-            nome: "Mouse",
-            situacao: "Disponível"
-        }
-    ];
+                    <label>Nome:</label>
 
-    let usuarios = [
-        {
-            id: "US001",
-            nome: "Elany",
-            status: "Ativo"
-        },
-        {
-            id: "US002",
-            nome: "Rayca",
-            status: "Ativo"
-        },
-        {
-            id: "US003",
-            nome: "Maria Amélia",
-            status: "Ativo"
-        },
-        {
-            id: "US004",
-            nome: "Ana",
-            status: "Ativo"
-        }
-    ];
+                    <input
+                        type="text"
+                        id="nomeUsuario"
+                        placeholder="Nome do usuário"
+                        required>
 
-    let historico = [
-        {
-            equipamento: "Tablet",
-            usuario: "Elany",
-            data: "10/09/2026",
-            acao: "Empréstimo"
-        },
-        {
-            equipamento: "Caixa de som",
-            usuario: "Rayca",
-            data: "11/09/2026",
-            acao: "Empréstimo"
-        }
-    ];
 
-    function mostrarTela(nome) {
+                    <label>Status:</label>
 
-        const telas = document.querySelectorAll(".tela");
+                    <select id="statusUsuario">
 
-        telas.forEach(function(tela) {
-            tela.classList.remove("ativa");
-        });
+                        <option value="Ativo">
+                            Ativo
+                        </option>
 
-        document
-            .getElementById(nome)
-            .classList.add("ativa");
+                        <option value="Inativo">
+                            Inativo
+                        </option>
 
-        atualizarTabelas();
-    }
+                    </select>
 
-    function classeSituacao(situacao) {
 
-        if (situacao === "Disponível") {
-            return "disponivel";
-        }
+                    <button
+                        class="btn"
+                        type="submit">
 
-        if (situacao === "Emprestado") {
-            return "emprestado";
-        }
+                        Cadastrar usuário
 
-        return "indisponivel";
-    }
+                    </button>
 
-    function atualizarResumo() {
+                </form>
 
-        document.getElementById("totalEquipamentos").textContent =
-            equipamentos.length;
+            </div>
 
-        document.getElementById("totalDisponiveis").textContent =
-            equipamentos.filter(
-                item => item.situacao === "Disponível"
-            ).length;
+        </section>
 
-        document.getElementById("totalEmprestados").textContent =
-            equipamentos.filter(
-                item => item.situacao === "Emprestado"
-            ).length;
 
-        document.getElementById("totalIndisponiveis").textContent =
-            equipamentos.filter(
-                item => item.situacao === "Indisponível"
-            ).length;
+        <!-- EMPRÉSTIMO -->
 
-        document.getElementById("totalUsuarios").textContent =
-            usuarios.length;
-    }
+        <section id="emprestimo" class="tela">
 
-    function atualizarEquipamentos() {
+            <h2>Registrar Empréstimo</h2>
 
-        const tabela =
-            document.getElementById("tabelaEquipamentos");
+            <div class="card">
 
-        tabela.innerHTML = "";
+                <form onsubmit="registrarEmprestimo(event)">
 
-        const pesquisa =
+                    <label>Equipamento:</label>
+
+                    <select
+                        id="equipamentoEmprestimo"
+                        required>
+                    </select>
+
+
+                    <label>Usuário:</label>
+
+                    <select
+                        id="usuarioEmprestimo"
+                        required>
+                    </select>
+
+
+                    <label>Data de retirada:</label>
+
+                    <input
+                        type="date"
+                        id="dataEmprestimo"
+                        required>
+
+
+                    <button
+                        class="btn"
+                        type="submit">
+
+                        Registrar empréstimo
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- DEVOLUÇÃO -->
+
+        <section id="devolucao" class="tela">
+
+            <h2>Registrar Devolução</h2>
+
+            <div class="card">
+
+                <form onsubmit="registrarDevolucao(event)">
+
+                    <label>Equipamento:</label>
+
+                    <select
+                        id="equipamentoDevolucao"
+                        required>
+                    </select>
+
+
+                    <button
+                        class="btn"
+                        type="submit">
+
+                        Registrar devolução
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTÓRICO -->
+
+        <section id="historico" class="tela">
+
+            <h2>Histórico</h2>
+
+            <div class="card">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Equipamento</th>
+
+                            <th>Usuário</th>
+
+                            <th>Data</th>
+
+                            <th>Tipo</th>
+
+                            <th>Ação</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tabelaHistorico"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script>
+
+        /* =========================
+           EQUIPAMENTOS
+        ========================= */
+
+        let equipamentos = [
+
+            {
+                id: "EQ001",
+                nome: "Notebook",
+                situacao: "Disponível"
+            },
+
+            {
+                id: "EQ002",
+                nome: "Projetor",
+                situacao: "Disponível"
+            },
+
+            {
+                id: "EQ003",
+                nome: "Tablet",
+                situacao: "Emprestado"
+            },
+
+            {
+                id: "EQ004",
+                nome: "Caixa de som",
+                situacao: "Emprestado"
+            },
+
+            {
+                id: "EQ005",
+                nome: "Computador",
+                situacao: "Indisponível"
+            },
+
+            {
+                id: "EQ006",
+                nome: "Mouse",
+                situacao: "Disponível"
+            }
+
+        ];
+
+
+        /* =========================
+           USUÁRIOS
+        ========================= */
+
+        let usuarios = [
+
+            {
+                id: "US001",
+                nome: "Elany",
+                status: "Ativo"
+            },
+
+            {
+                id: "US002",
+                nome: "Rayca",
+                status: "Ativo"
+            },
+
+            {
+                id: "US003",
+                nome: "Maria Amélia",
+                status: "Ativo"
+            },
+
+            {
+                id: "US004",
+                nome: "Ana",
+                status: "Ativo"
+            }
+
+        ];
+
+
+        /* =========================
+           HISTÓRICO
+        ========================= */
+
+        let historico = [
+
+            {
+                equipamento: "Tablet",
+                usuario: "Elany",
+                data: "10/09/2026",
+                tipo: "Empréstimo"
+            },
+
+            {
+                equipamento: "Caixa de som",
+                usuario: "Rayca",
+                data: "11/09/2026",
+                tipo: "Empréstimo"
+            }
+
+        ];
+
+
+        /* =========================
+           TROCAR DE TELA
+        ========================= */
+
+        function mostrarTela(tela, botao) {
+
             document
-                .getElementById("pesquisaEquipamento")
-                .value
-                .toLowerCase();
+                .querySelectorAll(".tela")
+                .forEach(function(elemento) {
 
-        equipamentos
-            .filter(function(equipamento) {
+                    elemento.classList.remove("ativa");
 
-                return (
-                    equipamento.nome.toLowerCase().includes(pesquisa) ||
-                    equipamento.id.toLowerCase().includes(pesquisa)
+                });
+
+
+            document
+                .querySelectorAll("nav button")
+                .forEach(function(elemento) {
+
+                    elemento.classList.remove("ativo");
+
+                });
+
+
+            document
+                .getElementById(tela)
+                .classList.add("ativa");
+
+
+            botao.classList.add("ativo");
+
+
+            atualizarTabelas();
+
+        }
+
+
+        /* =========================
+           SITUAÇÃO
+        ========================= */
+
+        function classeSituacao(situacao) {
+
+            if (situacao === "Disponível") {
+
+                return "disponivel";
+
+            }
+
+
+            if (situacao === "Emprestado") {
+
+                return "emprestado";
+
+            }
+
+
+            return "indisponivel";
+
+        }
+
+
+        /* =========================
+           EQUIPAMENTOS
+        ========================= */
+
+        function atualizarEquipamentos() {
+
+            const tabela =
+                document.getElementById(
+                    "tabelaEquipamentos"
                 );
 
-            })
-            .forEach(function(equipamento) {
+
+            const pesquisa =
+                document
+                    .getElementById(
+                        "pesquisaEquipamento"
+                    )
+                    .value
+                    .toLowerCase();
+
+
+            tabela.innerHTML = "";
+
+
+            equipamentos
+                .filter(function(equipamento) {
+
+                    return (
+
+                        equipamento.nome
+                            .toLowerCase()
+                            .includes(pesquisa)
+
+                        ||
+
+                        equipamento.id
+                            .toLowerCase()
+                            .includes(pesquisa)
+
+                    );
+
+                })
+                .forEach(function(equipamento) {
+
+                    tabela.innerHTML += `
+
+                        <tr>
+
+                            <td>
+                                ${equipamento.id}
+                            </td>
+
+                            <td>
+                                ${equipamento.nome}
+                            </td>
+
+                            <td class="${classeSituacao(equipamento.situacao)}">
+                                ${equipamento.situacao}
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="btn-editar"
+                                    onclick="editarEquipamento('${equipamento.id}')">
+
+                                    Editar
+
+                                </button>
+
+                                <button
+                                    class="btn-excluir"
+                                    onclick="excluirEquipamento('${equipamento.id}')">
+
+                                    Excluir
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    `;
+
+                });
+
+        }
+
+
+        /* =========================
+           USUÁRIOS
+        ========================= */
+
+        function atualizarUsuarios() {
+
+            const tabela =
+                document.getElementById(
+                    "tabelaUsuarios"
+                );
+
+
+            tabela.innerHTML = "";
+
+
+            usuarios.forEach(function(usuario) {
 
                 tabela.innerHTML += `
+
                     <tr>
-                        <td>${equipamento.id}</td>
 
-                        <td>${equipamento.nome}</td>
-
-                        <td class="${classeSituacao(equipamento.situacao)}">
-                            ${equipamento.situacao}
+                        <td>
+                            ${usuario.id}
                         </td>
 
-                        <td class="acoes">
+                        <td>
+                            ${usuario.nome}
+                        </td>
+
+                        <td>
+                            ${usuario.status}
+                        </td>
+
+                        <td>
 
                             <button
                                 class="btn-editar"
-                                onclick="editarEquipamento('${equipamento.id}')">
+                                onclick="editarUsuario('${usuario.id}')">
+
                                 Editar
+
                             </button>
 
                             <button
                                 class="btn-excluir"
-                                onclick="excluirEquipamento('${equipamento.id}')">
+                                onclick="excluirUsuario('${usuario.id}')">
+
                                 Excluir
+
                             </button>
 
                         </td>
+
                     </tr>
+
                 `;
+
             });
 
-        atualizarSelects();
-    }
+        }
 
-    function atualizarUsuarios() {
 
-        const tabela =
-            document.getElementById("tabelaUsuarios");
+        /* =========================
+           SELECTS
+        ========================= */
 
-        tabela.innerHTML = "";
+        function atualizarSelects() {
 
-        usuarios.forEach(function(usuario) {
+            const equipamentoEmprestimo =
+                document.getElementById(
+                    "equipamentoEmprestimo"
+                );
 
-            tabela.innerHTML += `
-                <tr>
 
-                    <td>${usuario.id}</td>
+            const equipamentoDevolucao =
+                document.getElementById(
+                    "equipamentoDevolucao"
+                );
 
-                    <td>${usuario.nome}</td>
 
-                    <td>${usuario.status}</td>
+            const usuarioEmprestimo =
+                document.getElementById(
+                    "usuarioEmprestimo"
+                );
 
-                    <td class="acoes">
 
-                        <button
-                            class="btn-editar"
-                            onclick="editarUsuario('${usuario.id}')">
-                            Editar
-                        </button>
+            equipamentoEmprestimo.innerHTML =
+                '<option value="">Selecione o equipamento</option>';
 
-                        <button
-                            class="btn-excluir"
-                            onclick="excluirUsuario('${usuario.id}')">
-                            Excluir
-                        </button>
 
-                    </td>
+            equipamentoDevolucao.innerHTML =
+                '<option value="">Selecione o equipamento</option>';
 
-                </tr>
-            `;
-        });
 
-        atualizarSelects();
-    }
+            usuarioEmprestimo.innerHTML =
+                '<option value="">Selecione o usuário</option>';
 
-    function atualizarSelects() {
 
-        const selectEmprestimo =
-            document.getElementById("equipamentoEmprestimo");
+            equipamentos
+                .filter(function(equipamento) {
 
-        selectEmprestimo.innerHTML =
-            '<option value="">Selecione um equipamento</option>';
+                    return equipamento.situacao === "Disponível";
 
-        equipamentos.forEach(function(equipamento) {
+                })
+                .forEach(function(equipamento) {
 
-            if (equipamento.situacao === "Disponível") {
+                    equipamentoEmprestimo.innerHTML += `
 
-                selectEmprestimo.innerHTML += `
-                    <option value="${equipamento.id}">
-                        ${equipamento.id} - ${equipamento.nome}
-                    </option>
+                        <option value="${equipamento.id}">
+
+                            ${equipamento.id} -
+                            ${equipamento.nome}
+
+                        </option>
+
+                    `;
+
+                });
+
+
+            equipamentos
+                .filter(function(equipamento) {
+
+                    return equipamento.situacao === "Emprestado";
+
+                })
+                .forEach(function(equipamento) {
+
+                    equipamentoDevolucao.innerHTML += `
+
+                        <option value="${equipamento.id}">
+
+                            ${equipamento.id} -
+                            ${equipamento.nome}
+
+                        </option>
+
+                    `;
+
+                });
+
+
+            usuarios
+                .filter(function(usuario) {
+
+                    return usuario.status === "Ativo";
+
+                })
+                .forEach(function(usuario) {
+
+                    usuarioEmprestimo.innerHTML += `
+
+                        <option value="${usuario.id}">
+
+                            ${usuario.id} -
+                            ${usuario.nome}
+
+                        </option>
+
+                    `;
+
+                });
+
+        }
+
+
+        /* =========================
+           HISTÓRICO
+        ========================= */
+
+        function atualizarHistorico() {
+
+            const tabela =
+                document.getElementById(
+                    "tabelaHistorico"
+                );
+
+
+            tabela.innerHTML = "";
+
+
+            historico.forEach(function(registro, index) {
+
+                tabela.innerHTML += `
+
+                    <tr>
+
+                        <td>
+                            ${registro.equipamento}
+                        </td>
+
+                        <td>
+                            ${registro.usuario}
+                        </td>
+
+                        <td>
+                            ${registro.data}
+                        </td>
+
+                        <td>
+                            ${registro.tipo}
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="btn-excluir"
+                                onclick="excluirHistorico(${index})">
+
+                                Excluir
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
                 `;
+
+            });
+
+        }
+
+
+        /* =========================
+           ATUALIZAR TUDO
+        ========================= */
+
+        function atualizarTabelas() {
+
+            atualizarEquipamentos();
+
+            atualizarUsuarios();
+
+            atualizarSelects();
+
+            atualizarHistorico();
+
+        }
+
+
+        /* =========================
+           CADASTRAR EQUIPAMENTO
+        ========================= */
+
+        function cadastrarEquipamento(event) {
+
+            event.preventDefault();
+
+
+            const id =
+                document
+                    .getElementById("idEquipamento")
+                    .value
+                    .trim();
+
+
+            const nome =
+                document
+                    .getElementById("nomeEquipamento")
+                    .value
+                    .trim();
+
+
+            const situacao =
+                document
+                    .getElementById("situacaoEquipamento")
+                    .value;
+
+
+            const existe =
+                equipamentos.some(function(equipamento) {
+
+                    return equipamento.id === id;
+
+                });
+
+
+            if (existe) {
+
+                alert(
+                    "Já existe um equipamento com esse ID."
+                );
+
+                return;
+
             }
-        });
 
-        const selectDevolucao =
-            document.getElementById("equipamentoDevolucao");
 
-        selectDevolucao.innerHTML =
-            '<option value="">Selecione um equipamento</option>';
+            equipamentos.push({
 
-        equipamentos.forEach(function(equipamento) {
+                id: id,
 
-            if (equipamento.situacao === "Emprestado") {
+                nome: nome,
 
-                selectDevolucao.innerHTML += `
-                    <option value="${equipamento.id}">
-                        ${equipamento.id} - ${equipamento.nome}
-                    </option>
-                `;
-            }
-        });
+                situacao: situacao
 
-        const selectUsuario =
-            document.getElementById("usuarioEmprestimo");
-
-        selectUsuario.innerHTML =
-            '<option value="">Selecione um usuário</option>';
-
-        usuarios.forEach(function(usuario) {
-
-            if (usuario.status === "Ativo") {
-
-                selectUsuario.innerHTML += `
-                    <option value="${usuario.id}">
-                        ${usuario.id} - ${usuario.nome}
-                    </option>
-                `;
-            }
-        });
-    }
-
-    function atualizarHistorico() {
-
-        const tabela =
-            document.getElementById("tabelaHistorico");
-
-        tabela.innerHTML = "";
-
-        historico.forEach(function(registro, indice) {
-
-            tabela.innerHTML += `
-                <tr>
-
-                    <td>${registro.equipamento}</td>
-
-                    <td>${registro.usuario}</td>
-
-                    <td>${registro.data}</td>
-
-                    <td>${registro.acao}</td>
-
-                    <td>
-
-                        <button
-                            class="btn-excluir"
-                            onclick="excluirHistorico(${indice})">
-                            Excluir
-                        </button>
-
-                    </td>
-
-                </tr>
-            `;
-        });
-    }
-
-    function atualizarTabelas() {
-
-        atualizarEquipamentos();
-        atualizarUsuarios();
-        atualizarHistorico();
-        atualizarResumo();
-    }
-
-    function cadastrarEquipamento(event) {
-
-        event.preventDefault();
-
-        const nome =
-            document.getElementById("nomeEquipamento").value.trim();
-
-        const id =
-            document.getElementById("idEquipamento").value.trim();
-
-        const situacao =
-            document.getElementById("situacaoEquipamento").value;
-
-        const existe =
-            equipamentos.some(function(item) {
-                return item.id.toLowerCase() === id.toLowerCase();
             });
 
-        if (existe) {
-
-            document.getElementById("mensagemEquipamento").innerHTML =
-                "Já existe um equipamento com essa identificação.";
-
-            return;
-        }
-
-        equipamentos.push({
-            id: id,
-            nome: nome,
-            situacao: situacao
-        });
-
-        document.getElementById("mensagemEquipamento").innerHTML =
-            "Equipamento cadastrado com sucesso!";
-
-        event.target.reset();
-
-        atualizarTabelas();
-    }
-
-    function editarEquipamento(id) {
-
-        const equipamento =
-            equipamentos.find(function(item) {
-                return item.id === id;
-            });
-
-        if (!equipamento) {
-            return;
-        }
-
-        const novoNome =
-            prompt("Digite o novo nome:", equipamento.nome);
-
-        if (novoNome === null || novoNome.trim() === "") {
-            return;
-        }
-
-        equipamento.nome = novoNome.trim();
-
-        atualizarTabelas();
-    }
-
-    function excluirEquipamento(id) {
-
-        const equipamento =
-            equipamentos.find(function(item) {
-                return item.id === id;
-            });
-
-        if (!equipamento) {
-            return;
-        }
-
-        if (equipamento.situacao === "Emprestado") {
 
             alert(
-                "Não é possível excluir um equipamento que está emprestado."
+                "Equipamento cadastrado com sucesso!"
             );
 
-            return;
+
+            event.target.reset();
+
+
+            atualizarTabelas();
+
         }
 
-        const confirmar =
-            confirm(
-                "Deseja realmente excluir o equipamento " +
-                equipamento.nome +
-                "?"
+
+        /* =========================
+           EDITAR EQUIPAMENTO
+        ========================= */
+
+        function editarEquipamento(id) {
+
+            const equipamento =
+                equipamentos.find(function(equipamento) {
+
+                    return equipamento.id === id;
+
+                });
+
+
+            const novoNome =
+                prompt(
+                    "Digite o novo nome do equipamento:",
+                    equipamento.nome
+                );
+
+
+            if (
+                novoNome !== null &&
+                novoNome.trim() !== ""
+            ) {
+
+                equipamento.nome =
+                    novoNome.trim();
+
+
+                atualizarTabelas();
+
+            }
+
+        }
+
+
+        /* =========================
+           EXCLUIR EQUIPAMENTO
+        ========================= */
+
+        function excluirEquipamento(id) {
+
+            const equipamento =
+                equipamentos.find(function(equipamento) {
+
+                    return equipamento.id === id;
+
+                });
+
+
+            if (
+                equipamento.situacao === "Emprestado"
+            ) {
+
+                alert(
+                    "Não é possível excluir um equipamento que está emprestado."
+                );
+
+                return;
+
+            }
+
+
+            const confirmar =
+                confirm(
+                    "Tem certeza que deseja excluir este equipamento?"
+                );
+
+
+            if (confirmar) {
+
+                equipamentos =
+                    equipamentos.filter(function(equipamento) {
+
+                        return equipamento.id !== id;
+
+                    });
+
+
+                atualizarTabelas();
+
+            }
+
+        }
+
+
+        /* =========================
+           CADASTRAR USUÁRIO
+        ========================= */
+
+        function cadastrarUsuario(event) {
+
+            event.preventDefault();
+
+
+            const id =
+                document
+                    .getElementById("idUsuario")
+                    .value
+                    .trim();
+
+
+            const nome =
+                document
+                    .getElementById("nomeUsuario")
+                    .value
+                    .trim();
+
+
+            const status =
+                document
+                    .getElementById("statusUsuario")
+                    .value;
+
+
+            const existe =
+                usuarios.some(function(usuario) {
+
+                    return usuario.id === id;
+
+                });
+
+
+            if (existe) {
+
+                alert(
+                    "Já existe um usuário com esse ID."
+                );
+
+                return;
+
+            }
+
+
+            usuarios.push({
+
+                id: id,
+
+                nome: nome,
+
+                status: status
+
+            });
+
+
+            alert(
+                "Usuário cadastrado com sucesso!"
             );
 
-        if (!confirmar) {
-            return;
+
+            event.target.reset();
+
+
+            atualizarTabelas();
+
         }
 
-        equipamentos =
-            equipamentos.filter(function(item) {
-                return item.id !== id;
+
+        /* =========================
+           EDITAR USUÁRIO
+        ========================= */
+
+        function editarUsuario(id) {
+
+            const usuario =
+                usuarios.find(function(usuario) {
+
+                    return usuario.id === id;
+
+                });
+
+
+            const novoNome =
+                prompt(
+                    "Digite o novo nome do usuário:",
+                    usuario.nome
+                );
+
+
+            if (
+                novoNome !== null &&
+                novoNome.trim() !== ""
+            ) {
+
+                usuario.nome =
+                    novoNome.trim();
+
+
+                atualizarTabelas();
+
+            }
+
+        }
+
+
+        /* =========================
+           EXCLUIR USUÁRIO
+        ========================= */
+
+        function excluirUsuario(id) {
+
+            const confirmar =
+                confirm(
+                    "Tem certeza que deseja excluir este usuário?"
+                );
+
+
+            if (confirmar) {
+
+                usuarios =
+                    usuarios.filter(function(usuario) {
+
+                        return usuario.id !== id;
+
+                    });
+
+
+                atualizarTabelas();
+
+            }
+
+        }
+
+
+        /* =========================
+           EMPRÉSTIMO
+        ========================= */
+
+        function registrarEmprestimo(event) {
+
+            event.preventDefault();
+
+
+            const equipamentoId =
+                document
+                    .getElementById(
+                        "equipamentoEmprestimo"
+                    )
+                    .value;
+
+
+            const usuarioId =
+                document
+                    .getElementById(
+                        "usuarioEmprestimo"
+                    )
+                    .value;
+
+
+            const data =
+                document
+                    .getElementById(
+                        "dataEmprestimo"
+                    )
+                    .value;
+
+
+            const equipamento =
+                equipamentos.find(function(equipamento) {
+
+                    return equipamento.id === equipamentoId;
+
+                });
+
+
+            const usuario =
+                usuarios.find(function(usuario) {
+
+                    return usuario.id === usuarioId;
+
+                });
+
+
+            equipamento.situacao =
+                "Emprestado";
+
+
+            historico.push({
+
+                equipamento:
+                    equipamento.nome,
+
+                usuario:
+                    usuario.nome,
+
+                data:
+                    formatarData(data),
+
+                tipo:
+                    "Empréstimo"
+
             });
 
-        atualizarTabelas();
-    }
 
-    function cadastrarUsuario(event) {
-
-        event.preventDefault();
-
-        const nome =
-            document.getElementById("nomeUsuario").value.trim();
-
-        const id =
-            document.getElementById("idUsuario").value.trim();
-
-        const existe =
-            usuarios.some(function(item) {
-                return item.id.toLowerCase() === id.toLowerCase();
-            });
-
-        if (existe) {
-
-            document.getElementById("mensagemUsuario").innerHTML =
-                "Já existe um usuário com essa identificação.";
-
-            return;
-        }
-
-        usuarios.push({
-            id: id,
-            nome: nome,
-            status: "Ativo"
-        });
-
-        document.getElementById("mensagemUsuario").innerHTML =
-            "Usuário cadastrado com sucesso!";
-
-        event.target.reset();
-
-        atualizarTabelas();
-    }
-
-    function editarUsuario(id) {
-
-        const usuario =
-            usuarios.find(function(item) {
-                return item.id === id;
-            });
-
-        if (!usuario) {
-            return;
-        }
-
-        const novoNome =
-            prompt("Digite o novo nome:", usuario.nome);
-
-        if (novoNome === null || novoNome.trim() === "") {
-            return;
-        }
-
-        usuario.nome = novoNome.trim();
-
-        atualizarTabelas();
-    }
-
-    function excluirUsuario(id) {
-
-        const usuario =
-            usuarios.find(function(item) {
-                return item.id === id;
-            });
-
-        if (!usuario) {
-            return;
-        }
-
-        const confirmar =
-            confirm(
-                "Deseja realmente excluir o usuário " +
-                usuario.nome +
-                "?"
+            alert(
+                "Empréstimo registrado com sucesso!"
             );
 
-        if (!confirmar) {
-            return;
+
+            event.target.reset();
+
+
+            atualizarTabelas();
+
         }
 
-        usuarios =
-            usuarios.filter(function(item) {
-                return item.id !== id;
+
+        /* =========================
+           DEVOLUÇÃO
+        ========================= */
+
+        function registrarDevolucao(event) {
+
+            event.preventDefault();
+
+
+            const equipamentoId =
+                document
+                    .getElementById(
+                        "equipamentoDevolucao"
+                    )
+                    .value;
+
+
+            const equipamento =
+                equipamentos.find(function(equipamento) {
+
+                    return equipamento.id === equipamentoId;
+
+                });
+
+
+            equipamento.situacao =
+                "Disponível";
+
+
+            historico.push({
+
+                equipamento:
+                    equipamento.nome,
+
+                usuario:
+                    "Sistema",
+
+                data:
+                    formatarDataHoje(),
+
+                tipo:
+                    "Devolução"
+
             });
+
+
+            alert(
+                "Devolução registrada com sucesso!"
+            );
+
+
+            event.target.reset();
+
+
+            atualizarTabelas();
+
+        }
+
+
+        /* =========================
+           EXCLUIR HISTÓRICO
+        ========================= */
+
+        function excluirHistorico(index) {
+
+            const confirmar =
+                confirm(
+                    "Tem certeza que deseja excluir este registro?"
+                );
+
+
+            if (confirmar) {
+
+                historico.splice(index, 1);
+
+
+                atualizarTabelas();
+
+            }
+
+        }
+
+
+        /* =========================
+           FORMATAR DATA
+        ========================= */
+
+        function formatarData(data) {
+
+            const partes =
+                data.split("-");
+
+
+            return (
+                partes[2] +
+                "/" +
+                partes[1] +
+                "/" +
+                partes[0]
+            );
+
+        }
+
+
+        /* =========================
+           DATA DE HOJE
+        ========================= */
+
+        function formatarDataHoje() {
+
+            const hoje =
+                new Date();
+
+
+            const dia =
+                String(
+                    hoje.getDate()
+                ).padStart(2, "0");
+
+
+            const mes =
+                String(
+                    hoje.getMonth() + 1
+                ).padStart(2, "0");
+
+
+            const ano =
+                hoje.getFullYear();
+
+
+            return (
+                dia +
+                "/" +
+                mes +
+                "/" +
+                ano
+            );
+
+        }
+
+
+        /* =========================
+           INICIAR SISTEMA
+        ========================= */
 
         atualizarTabelas();
-    }
 
-    function registrarEmprestimo(event) {
-
-        event.preventDefault();
-
-        const idEquipamento =
-            document.getElementById("equipamentoEmprestimo").value;
-
-        const idUsuario =
-            document.getElementById("usuarioEmprestimo").value;
-
-        const data =
-            document.getElementById("dataEmprestimo").value;
-
-        const equipamento =
-            equipamentos.find(function(item) {
-                return item.id === idEquipamento;
-            });
-
-        const usuario =
-            usuarios.find(function(item) {
-                return item.id === idUsuario;
-            });
-
-        if (!equipamento || !usuario) {
-            return;
-        }
-
-        if (equipamento.situacao !== "Disponível") {
-
-            document.getElementById("mensagemEmprestimo").innerHTML =
-                "Esse equipamento não está disponível.";
-
-            return;
-        }
-
-        equipamento.situacao = "Emprestado";
-
-        historico.push({
-            equipamento: equipamento.nome,
-            usuario: usuario.nome,
-            data: formatarData(data),
-            acao: "Empréstimo"
-        });
-
-        document.getElementById("mensagemEmprestimo").innerHTML =
-            "Empréstimo registrado com sucesso!";
-
-        event.target.reset();
-
-        atualizarTabelas();
-    }
-
-    function registrarDevolucao(event) {
-
-        event.preventDefault();
-
-        const idEquipamento =
-            document.getElementById("equipamentoDevolucao").value;
-
-        const equipamento =
-            equipamentos.find(function(item) {
-                return item.id === idEquipamento;
-            });
-
-        if (!equipamento) {
-            return;
-        }
-
-        equipamento.situacao = "Disponível";
-
-        historico.push({
-            equipamento: equipamento.nome,
-            usuario: "Sistema",
-            data: formatarDataHoje(),
-            acao: "Devolução"
-        });
-
-        document.getElementById("mensagemDevolucao").innerHTML =
-            "Devolução registrada com sucesso!";
-
-        event.target.reset();
-
-        atualizarTabelas();
-    }
-
-    function excluirHistorico(indice) {
-
-        const confirmar =
-            confirm("Deseja excluir este registro do histórico?");
-
-        if (!confirmar) {
-            return;
-        }
-
-        historico.splice(indice, 1);
-
-        atualizarHistorico();
-    }
-
-    function formatarData(data) {
-
-        if (!data) {
-            return "";
-        }
-
-        const partes = data.split("-");
-
-        return partes[2] + "/" + partes[1] + "/" + partes[0];
-    }
-
-    function formatarDataHoje() {
-
-        const data = new Date();
-
-        const dia =
-            String(data.getDate()).padStart(2, "0");
-
-        const mes =
-            String(data.getMonth() + 1).padStart(2, "0");
-
-        const ano =
-            data.getFullYear();
-
-        return dia + "/" + mes + "/" + ano;
-    }
-
-    atualizarTabelas();
-
-</script>
+    </script>
 
 </body>
+
 </html>
