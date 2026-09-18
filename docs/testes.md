@@ -23,3 +23,8 @@ Registrar os testes realizados no sistema TechControl durante a Etapa 3, verific
 ## Resultado geral
 
 Os testes realizados apresentaram os resultados esperados. As funcionalidades de cadastro, consulta, edição, exclusão, empréstimo, devolução e histórico foram verificadas durante os testes do sistema.
+## Feedback da validação
+
+Durante a validação do sistema, foi observado que as funcionalidades principais funcionaram conforme o esperado. Os testes permitiram verificar o cadastro, consulta, edição e exclusão de equipamentos e usuários, além do registro de empréstimos, devoluções e histórico.
+
+A utilização do sistema mostrou que o fluxo das operações está organizado e permite realizar as tarefas propostas de forma simples.
