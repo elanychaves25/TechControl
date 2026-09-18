@@ -30,7 +30,10 @@ Durante a validação do sistema, foi observado que as funcionalidades principai
 A utilização do sistema mostrou que o fluxo das operações está organizado e permite realizar as tarefas propostas de forma simples.
 ## Evidências dos testes
 
-Durante a validação do sistema, foram realizados testes nas principais funcionalidades do TechControl, incluindo cadastro, edição, exclusão, empréstimo, devolução e consulta do histórico.
+### Evidência 1 — Consulta de equipamentos
 
-As evidências foram obtidas por meio de testes realizados diretamente no sistema publicado no GitHub Pages.
+![Tabela de equipamentos](./Captura%20de%20tela%202026-09-18%20180307.png)
 
+### Evidência 2 — Histórico
+
+![Histórico do sistema](./Captura%20de%20tela%202026-09-18%20180347.png)
