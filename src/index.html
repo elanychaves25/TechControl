@@ -1,386 +1,1754 @@
 
     
-        
-      * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background: #f4f7fa;
-    color: #34495e;
-    line-height: 1.5;
-}
-
-/* =========================
-   CABEÇALHO
-========================= */
-
-header {
-    background: #1f4e79;
-    color: white;
-    text-align: center;
-    padding: 28px 20px;
-    box-shadow: 0 3px 10px rgba(31, 78, 121, 0.18);
-}
-
-header h1 {
-    font-size: 32px;
-    margin-bottom: 6px;
-    letter-spacing: 0.3px;
-}
-
-header p {
-    font-size: 15px;
-    opacity: 0.95;
-}
-
-
-/* =========================
-   MENU
-========================= */
-
-nav {
-    background: white;
-    padding: 16px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 9px;
-    flex-wrap: wrap;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-nav button {
-    background: #1f4e79;
-    color: white;
-    border: none;
-    padding: 11px 19px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    transition: all 0.2s ease;
-}
-
-nav button:hover {
-    background: #285f91;
-    transform: translateY(-1px);
-}
-
-/* BOTÃO DA TELA ATUAL */
-
-nav button.ativo {
-    background: #a9d8f5;
-    color: #174a70;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(31, 78, 121, 0.18);
-    transform: translateY(-1px);
-}
-
-
-/* =========================
-   CONTEÚDO
-========================= */
-
-main {
-    max-width: 1100px;
-    margin: 35px auto;
-    padding: 0 22px;
-}
-
-.tela {
-    display: none;
-}
-
-.tela.ativa {
-    display: block;
-}
-
-h2 {
-    color: #1f4e79;
-    font-size: 27px;
-    margin-bottom: 20px;
-}
-
-h3 {
-    color: #1f4e79;
-    font-size: 20px;
-}
-
-
-/* =========================
-   CARDS / QUADRADOS
-========================= */
-
-.card {
-    background: white;
-    padding: 24px;
-    border-radius: 14px;
-    border: 1px solid #e6edf3;
-    box-shadow: 0 4px 14px rgba(31, 78, 121, 0.08);
-    margin-bottom: 22px;
-}
-
-.card:hover {
-    box-shadow: 0 6px 18px rgba(31, 78, 121, 0.11);
-}
-
-
-/* =========================
-   PESQUISA
-========================= */
-
-.pesquisa {
-    margin-bottom: 18px;
-    position: relative;
-}
-
-.pesquisa input {
-    width: 100%;
-    padding: 13px 16px;
-    border: 1px solid #cbd9e5;
-    border-radius: 9px;
-    font-size: 14px;
-    background: #fbfdff;
-    transition: 0.2s;
-}
-
-.pesquisa input:focus {
-    outline: none;
-    border-color: #8ecae6;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(142, 202, 230, 0.18);
-}
-
-
-/* =========================
-   TABELAS
-========================= */
-
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    overflow: hidden;
-    background: white;
-    border: 1px solid #e1e9f0;
-    border-radius: 10px;
-}
-
-th {
-    background: #1f4e79;
-    color: white;
-    padding: 13px 14px;
-    text-align: left;
-    font-size: 14px;
-}
-
-td {
-    padding: 13px 14px;
-    border-bottom: 1px solid #edf1f5;
-    font-size: 14px;
-}
-
-tr:last-child td {
-    border-bottom: none;
-}
-
-tbody tr:hover {
-    background: #f5faff;
-}
-
-
-/* =========================
-   SITUAÇÕES
-========================= */
-
-.disponivel {
-    color: #238636;
-    font-weight: bold;
-}
-
-.emprestado {
-    color: #d97706;
-    font-weight: bold;
-}
-
-.indisponivel {
-    color: #c62828;
-    font-weight: bold;
-}
-
-
-/* =========================
-   FORMULÁRIOS
-========================= */
-
-form {
-    display: grid;
-    gap: 11px;
-}
-
-label {
-    font-weight: 600;
-    color: #1f4e79;
-    font-size: 14px;
-    margin-top: 3px;
-}
-
-input,
-select {
-    width: 100%;
-    padding: 12px 13px;
-    border: 1px solid #cbd9e5;
-    border-radius: 8px;
-    font-size: 14px;
-    background: #fbfdff;
-}
-
-input:focus,
-select:focus {
-    outline: none;
-    border-color: #8ecae6;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(142, 202, 230, 0.18);
-}
-
-
-/* =========================
-   BOTÃO PRINCIPAL
-========================= */
-
-.btn {
-    background: #1f4e79;
-    color: white;
-    border: none;
-    padding: 12px 19px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
-    margin-top: 6px;
-    transition: 0.2s;
-}
-
-.btn:hover {
-    background: #285f91;
-    transform: translateY(-1px);
-}
-
-
-/* =========================
-   BOTÃO EDITAR
-========================= */
-
-.btn-editar {
-    background: #b9dcf5;
-    color: #174a70;
-    border: none;
-    padding: 8px 13px;
-    border-radius: 7px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-right: 5px;
-    transition: 0.2s;
-}
-
-.btn-editar:hover {
-    background: #9fd3f2;
-    transform: translateY(-1px);
-}
-
-
-/* =========================
-   BOTÃO EXCLUIR
-========================= */
-
-.btn-excluir {
-    background: #d4eafb;
-    color: #174a70;
-    border: none;
-    padding: 8px 13px;
-    border-radius: 7px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-}
-
-.btn-excluir:hover {
-    background: #b9dcf5;
-    transform: translateY(-1px);
-}
-
-
-/* =========================
-   MENSAGEM
-========================= */
-
-.mensagem {
-    margin-top: 10px;
-    padding: 12px 14px;
-    border-radius: 8px;
-    background: #e8f4fc;
-    color: #174a70;
-    border: 1px solid #cce6f5;
-}
-
-
-/* =========================
-   RESPONSIVO
-========================= */
-
-@media (max-width: 700px) {
-
-    main {
-        padding: 0 12px;
-        margin-top: 25px;
-    }
-
-    header {
-        padding: 23px 15px;
-    }
-
-    header h1 {
-        font-size: 27px;
-    }
-
-    header p {
-        font-size: 13px;
-    }
-
-    nav {
-        padding: 12px;
-        gap: 7px;
-    }
-
-    nav button {
-        padding: 9px 13px;
-        font-size: 13px;
-    }
-
-    .card {
-        padding: 17px;
-        border-radius: 12px;
-    }
-
-    h2 {
-        font-size: 24px;
-    }
-
-    table {
-        font-size: 13px;
-    }
-
-    th,
-    td {
-        padding: 9px;
-    }
-
-    .btn-editar,
-    .btn-excluir {
-        margin: 3px 2px;
-    }
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TechControl</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fa;
+            color: #34495e;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           CABEÇALHO
+        ========================= */
+
+        header {
+            background: #1f4e79;
+            color: white;
+            text-align: center;
+            padding: 28px 20px;
+            box-shadow: 0 3px 10px rgba(31, 78, 121, 0.18);
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        header p {
+            font-size: 15px;
+            opacity: 0.95;
+        }
+
+        /* =========================
+           NAVEGAÇÃO
+        ========================= */
+
+        nav {
+            background: white;
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        nav button {
+            background: #1f4e79;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        nav button:hover {
+            background: #285f91;
+            transform: translateY(-1px);
+        }
+
+        /* BOTÃO DA TELA ATUAL */
+
+        nav button.ativo {
+            background: #a9d8fb;
+            color: #174a70;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(31, 78, 121, 0.18);
+        }
+
+        /* =========================
+           CONTEÚDO
+        ========================= */
+
+        main {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 22px;
+        }
+
+        .tela {
+            display: none;
+        }
+
+        .tela.ativa {
+            display: block;
+        }
+
+        h2 {
+            color: #1f4e79;
+            font-size: 27px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(31, 78, 121, 0.08);
+            margin-bottom: 22px;
+        }
+
+        .card h3 {
+            color: #1f4e79;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           PESQUISA
+        ========================= */
+
+        .pesquisa {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid #cbd9e5;
+            border-radius: 9px;
+            font-size: 14px;
+            margin-bottom: 18px;
+            background: #fbfdff;
+        }
+
+        .pesquisa:focus {
+            outline: none;
+            border-color: #8ecae6;
+            box-shadow: 0 0 0 3px rgba(142, 202, 230, 0.18);
+        }
+
+        /* =========================
+           TABELAS
+        ========================= */
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            background: white;
+            border-radius: 10px;
+        }
+
+        th {
+            background: #1f4e79;
+            color: white;
+            padding: 13px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 13px;
+            border-bottom: 1px solid #e9eef2;
+            font-size: 14px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #f7fbff;
+        }
+
+        /* =========================
+           SITUAÇÕES
+        ========================= */
+
+        .disponivel {
+            color: #29863d;
+            font-weight: bold;
+        }
+
+        .emprestado {
+            color: #d28b20;
+            font-weight: bold;
+        }
+
+        .indisponivel {
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        /* =========================
+           FORMULÁRIOS
+        ========================= */
+
+        form {
+            display: grid;
+            gap: 11px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1f4e79;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd9e5;
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #8ecae6;
+            box-shadow: 0 0 0 3px rgba(142, 202, 230, 0.18);
+        }
+
+        /* =========================
+           BOTÕES
+        ========================= */
+
+        button {
+            cursor: pointer;
+        }
+
+        .btn {
+            border: none;
+            padding: 11px 17px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-principal {
+            background: #1f4e79;
+            color: white;
+        }
+
+        .btn-principal:hover {
+            background: #285f91;
+            transform: translateY(-1px);
+        }
+
+        .btn-editar {
+            background: #b9dcf5;
+            color: #174a70;
+            margin-right: 5px;
+        }
+
+        .btn-editar:hover {
+            background: #9fcde9;
+            transform: translateY(-1px);
+        }
+
+        .btn-excluir {
+            background: #d4eafb;
+            color: #174a70;
+        }
+
+        .btn-excluir:hover {
+            background: #bcdcf2;
+            transform: translateY(-1px);
+        }
+
+        .btn-excluir-historico {
+            background: #d4eafb;
+            color: #174a70;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .btn-excluir-historico:hover {
+            background: #bcdcf2;
+        }
+
+        /* =========================
+           MENSAGENS
+        ========================= */
+
+        .mensagem {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #eaf6ff;
+            color: #174a70;
+            display: none;
+        }
+
+        .mensagem.mostrar {
+            display: block;
+        }
+
+        /* =========================
+           INÍCIO
+        ========================= */
+
+        .inicio-texto {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .inicio-texto h2 {
+            margin-bottom: 12px;
+        }
+
+        .inicio-texto p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 16px;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 26px;
+            }
+
+            nav {
+                gap: 6px;
+            }
+
+            nav button {
+                padding: 9px 12px;
+                font-size: 13px;
+            }
+
+            main {
+                margin-top: 25px;
+                padding: 0 12px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            th,
+            td {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         CABEÇALHO
+    ========================= -->
+
+    <header>
+        <h1>TechControl</h1>
+        <p>Sistema de Controle de Empréstimo de Equipamentos Escolares</p>
+    </header>
+
+    <!-- =========================
+         MENU
+    ========================= -->
+
+    <nav>
+        <button class="ativo" onclick="mostrarTela('inicio', this)">Início</button>
+        <button onclick="mostrarTela('equipamentos', this)">Equipamentos</button>
+        <button onclick="mostrarTela('usuarios', this)">Usuários</button>
+        <button onclick="mostrarTela('emprestimo', this)">Empréstimo</button>
+        <button onclick="mostrarTela('devolucao', this)">Devolução</button>
+        <button onclick="mostrarTela('historico', this)">Histórico</button>
+    </nav>
+
+    <main>
+
+        <!-- =========================
+             INÍCIO
+        ========================= -->
+
+        <section id="inicio" class="tela ativa">
+
+            <div class="card inicio-texto">
+
+                <h2>Bem-vindo ao TechControl!</h2>
+
+                <p>
+                    Sistema desenvolvido para facilitar o controle
+                    de equipamentos escolares, usuários, empréstimos,
+                    devoluções e histórico de movimentações.
+                </p>
+
+                <br>
+
+                <p>
+                    Utilize o menu acima para acessar as funções
+                    do sistema.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EQUIPAMENTOS
+        ========================= -->
+
+        <section id="equipamentos" class="tela">
+
+            <h2>Equipamentos</h2>
+
+            <div class="card">
+
+                <h3>Pesquisar equipamento</h3>
+
+                <input
+                    type="text"
+                    id="pesquisaEquipamento"
+                    class="pesquisa"
+                    placeholder="Pesquisar por nome ou identificação..."
+                    oninput="listarEquipamentos()"
+                >
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Equipamento</th>
+                            <th>Situação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabelaEquipamentos"></tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Cadastrar equipamento</h3>
+
+                <form onsubmit="cadastrarEquipamento(event)">
+
+                    <label for="idEquipamento">
+                        Identificação
+                    </label>
+
+                    <input
+                        type="text"
+                        id="idEquipamento"
+                        placeholder="Ex.: EQ007"
+                        required
+                    >
+
+                    <label for="nomeEquipamento">
+                        Nome do equipamento
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeEquipamento"
+                        placeholder="Ex.: Teclado"
+                        required
+                    >
+
+                    <label for="situacaoEquipamento">
+                        Situação
+                    </label>
+
+                    <select id="situacaoEquipamento">
+
+                        <option value="Disponível">
+                            Disponível
+                        </option>
+
+                        <option value="Emprestado">
+                            Emprestado
+                        </option>
+
+                        <option value="Indisponível">
+                            Indisponível
+                        </option>
+
+                    </select>
+
+                    <button class="btn btn-principal" type="submit">
+                        Cadastrar equipamento
+                    </button>
+
+                </form>
+
+                <div id="mensagemEquipamento" class="mensagem"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             USUÁRIOS
+        ========================= -->
+
+        <section id="usuarios" class="tela">
+
+            <h2>Usuários</h2>
+
+            <div class="card">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabelaUsuarios"></tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Cadastrar usuário</h3>
+
+                <form onsubmit="cadastrarUsuario(event)">
+
+                    <label for="idUsuario">
+                        Identificação
+                    </label>
+
+                    <input
+                        type="text"
+                        id="idUsuario"
+                        placeholder="Ex.: US005"
+                        required
+                    >
+
+                    <label for="nomeUsuario">
+                        Nome
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeUsuario"
+                        placeholder="Nome do usuário"
+                        required
+                    >
+
+                    <label for="statusUsuario">
+                        Status
+                    </label>
+
+                    <select id="statusUsuario">
+
+                        <option value="Ativo">
+                            Ativo
+                        </option>
+
+                        <option value="Inativo">
+                            Inativo
+                        </option>
+
+                    </select>
+
+                    <button class="btn btn-principal" type="submit">
+                        Cadastrar usuário
+                    </button>
+
+                </form>
+
+                <div id="mensagemUsuario" class="mensagem"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EMPRÉSTIMO
+        ========================= -->
+
+        <section id="emprestimo" class="tela">
+
+            <h2>Registro de Empréstimo</h2>
+
+            <div class="card">
+
+                <form onsubmit="registrarEmprestimo(event)">
+
+                    <label for="equipamentoEmprestimo">
+                        Equipamento disponível
+                    </label>
+
+                    <select id="equipamentoEmprestimo" required></select>
+
+
+                    <label for="usuarioEmprestimo">
+                        Usuário responsável
+                    </label>
+
+                    <select id="usuarioEmprestimo" required></select>
+
+
+                    <label for="dataEmprestimo">
+                        Data da retirada
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataEmprestimo"
+                        required
+                    >
+
+
+                    <button class="btn btn-principal" type="submit">
+                        Registrar empréstimo
+                    </button>
+
+                </form>
+
+                <div id="mensagemEmprestimo" class="mensagem"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DEVOLUÇÃO
+        ========================= -->
+
+        <section id="devolucao" class="tela">
+
+            <h2>Registro de Devolução</h2>
+
+            <div class="card">
+
+                <form onsubmit="registrarDevolucao(event)">
+
+                    <label for="equipamentoDevolucao">
+                        Equipamento emprestado
+                    </label>
+
+                    <select id="equipamentoDevolucao" required></select>
+
+
+                    <button class="btn btn-principal" type="submit">
+                        Registrar devolução
+                    </button>
+
+                </form>
+
+                <div id="mensagemDevolucao" class="mensagem"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             HISTÓRICO
+        ========================= -->
+
+        <section id="historico" class="tela">
+
+            <h2>Histórico</h2>
+
+            <div class="card">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Equipamento</th>
+                            <th>Usuário</th>
+                            <th>Data</th>
+                            <th>Operação</th>
+                            <th>Ação</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tabelaHistorico"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        // ==========================================
+        // DADOS INICIAIS
+        // ==========================================
+
+        let equipamentos = [
+
+            {
+                id: "EQ001",
+                nome: "Notebook",
+                situacao: "Disponível"
+            },
+
+            {
+                id: "EQ002",
+                nome: "Projetor",
+                situacao: "Disponível"
+            },
+
+            {
+                id: "EQ003",
+                nome: "Tablet",
+                situacao: "Emprestado"
+            },
+
+            {
+                id: "EQ004",
+                nome: "Caixa de som",
+                situacao: "Emprestado"
+            },
+
+            {
+                id: "EQ005",
+                nome: "Computador",
+                situacao: "Indisponível"
+            },
+
+            {
+                id: "EQ006",
+                nome: "Mouse",
+                situacao: "Disponível"
+            }
+
+        ];
+
+
+        let usuarios = [
+
+            {
+                id: "US001",
+                nome: "Elany",
+                status: "Ativo"
+            },
+
+            {
+                id: "US002",
+                nome: "Rayca",
+                status: "Ativo"
+            },
+
+            {
+                id: "US003",
+                nome: "Maria Amélia",
+                status: "Ativo"
+            },
+
+            {
+                id: "US004",
+                nome: "Ana",
+                status: "Ativo"
+            }
+
+        ];
+
+
+        let historico = [
+
+            {
+                equipamento: "Tablet",
+                usuario: "Elany",
+                data: "10/09/2026",
+                operacao: "Empréstimo"
+            },
+
+            {
+                equipamento: "Caixa de som",
+                usuario: "Rayca",
+                data: "11/09/2026",
+                operacao: "Empréstimo"
+            }
+
+        ];
+
+
+        // ==========================================
+        // TROCAR DE TELA
+        // ==========================================
+
+        function mostrarTela(tela, botao) {
+
+            const telas = document.querySelectorAll(".tela");
+
+            telas.forEach(function(item) {
+                item.classList.remove("ativa");
+            });
+
+            document
+                .getElementById(tela)
+                .classList.add("ativa");
+
+
+            const botoes = document.querySelectorAll("nav button");
+
+            botoes.forEach(function(item) {
+                item.classList.remove("ativo");
+            });
+
+
+            botao.classList.add("ativo");
+
+
+            if (tela === "equipamentos") {
+                listarEquipamentos();
+            }
+
+            if (tela === "usuarios") {
+                listarUsuarios();
+            }
+
+            if (tela === "emprestimo") {
+                carregarFormularioEmprestimo();
+            }
+
+            if (tela === "devolucao") {
+                carregarFormularioDevolucao();
+            }
+
+            if (tela === "historico") {
+                listarHistorico();
+            }
+
+        }
+
+
+        // ==========================================
+        // SITUAÇÃO DO EQUIPAMENTO
+        // ==========================================
+
+        function classeSituacao(situacao) {
+
+            if (situacao === "Disponível") {
+                return "disponivel";
+            }
+
+            if (situacao === "Emprestado") {
+                return "emprestado";
+            }
+
+            return "indisponivel";
+
+        }
+
+
+        // ==========================================
+        // LISTAR EQUIPAMENTOS
+        // ==========================================
+
+        function listarEquipamentos() {
+
+            const tabela =
+                document.getElementById("tabelaEquipamentos");
+
+            const pesquisa =
+                document
+                .getElementById("pesquisaEquipamento")
+                .value
+                .toLowerCase()
+                .trim();
+
+
+            tabela.innerHTML = "";
+
+
+            const filtrados = equipamentos.filter(function(equipamento) {
+
+                return (
+                    equipamento.id.toLowerCase().includes(pesquisa) ||
+                    equipamento.nome.toLowerCase().includes(pesquisa)
+                );
+
+            });
+
+
+            filtrados.forEach(function(equipamento) {
+
+                const linha = document.createElement("tr");
+
+
+                linha.innerHTML = `
+
+                    <td>${equipamento.id}</td>
+
+                    <td>${equipamento.nome}</td>
+
+                    <td class="${classeSituacao(equipamento.situacao)}">
+                        ${equipamento.situacao}
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="btn btn-editar"
+                            onclick="editarEquipamento('${equipamento.id}')"
+                        >
+                            Editar
+                        </button>
+
+                        <button
+                            class="btn btn-excluir"
+                            onclick="excluirEquipamento('${equipamento.id}')"
+                        >
+                            Excluir
+                        </button>
+
+                    </td>
+
+                `;
+
+
+                tabela.appendChild(linha);
+
+            });
+
+        }
+
+
+        // ==========================================
+        // CADASTRAR EQUIPAMENTO
+        // ==========================================
+
+        function cadastrarEquipamento(event) {
+
+            event.preventDefault();
+
+
+            const id =
+                document
+                .getElementById("idEquipamento")
+                .value
+                .trim()
+                .toUpperCase();
+
+
+            const nome =
+                document
+                .getElementById("nomeEquipamento")
+                .value
+                .trim();
+
+
+            const situacao =
+                document
+                .getElementById("situacaoEquipamento")
+                .value;
+
+
+            const existe = equipamentos.some(function(equipamento) {
+
+                return equipamento.id === id;
+
+            });
+
+
+            if (existe) {
+
+                mostrarMensagem(
+                    "mensagemEquipamento",
+                    "Já existe um equipamento com essa identificação."
+                );
+
+                return;
+            }
+
+
+            equipamentos.push({
+
+                id: id,
+                nome: nome,
+                situacao: situacao
+
+            });
+
+
+            listarEquipamentos();
+
+            event.target.reset();
+
+
+            mostrarMensagem(
+                "mensagemEquipamento",
+                "Equipamento cadastrado com sucesso!"
+            );
+
+        }
+
+
+        // ==========================================
+        // EDITAR EQUIPAMENTO
+        // ==========================================
+
+        function editarEquipamento(id) {
+
+            const equipamento =
+                equipamentos.find(function(item) {
+
+                    return item.id === id;
+
+                });
+
+
+            if (!equipamento) {
+                return;
+            }
+
+
+            const novoNome =
+                prompt(
+                    "Digite o novo nome do equipamento:",
+                    equipamento.nome
+                );
+
+
+            if (novoNome === null) {
+                return;
+            }
+
+
+            if (novoNome.trim() === "") {
+
+                alert("O nome não pode ficar vazio.");
+
+                return;
+            }
+
+
+            equipamento.nome = novoNome.trim();
+
+            listarEquipamentos();
+
+        }
+
+
+        // ==========================================
+        // EXCLUIR EQUIPAMENTO
+        // ==========================================
+
+        function excluirEquipamento(id) {
+
+            const equipamento =
+                equipamentos.find(function(item) {
+
+                    return item.id === id;
+
+                });
+
+
+            if (!equipamento) {
+                return;
+            }
+
+
+            if (equipamento.situacao === "Emprestado") {
+
+                alert(
+                    "Não é possível excluir um equipamento que está emprestado."
+                );
+
+                return;
+            }
+
+
+            const confirmar =
+                confirm(
+                    "Tem certeza que deseja excluir este equipamento?"
+                );
+
+
+            if (!confirmar) {
+                return;
+            }
+
+
+            equipamentos =
+                equipamentos.filter(function(item) {
+
+                    return item.id !== id;
+
+                });
+
+
+            listarEquipamentos();
+
+        }
+
+
+        // ==========================================
+        // LISTAR USUÁRIOS
+        // ==========================================
+
+        function listarUsuarios() {
+
+            const tabela =
+                document.getElementById("tabelaUsuarios");
+
+
+            tabela.innerHTML = "";
+
+
+            usuarios.forEach(function(usuario) {
+
+                const linha =
+                    document.createElement("tr");
+
+
+                linha.innerHTML = `
+
+                    <td>${usuario.id}</td>
+
+                    <td>${usuario.nome}</td>
+
+                    <td>${usuario.status}</td>
+
+                    <td>
+
+                        <button
+                            class="btn btn-editar"
+                            onclick="editarUsuario('${usuario.id}')"
+                        >
+                            Editar
+                        </button>
+
+                        <button
+                            class="btn btn-excluir"
+                            onclick="excluirUsuario('${usuario.id}')"
+                        >
+                            Excluir
+                        </button>
+
+                    </td>
+
+                `;
+
+
+                tabela.appendChild(linha);
+
+            });
+
+        }
+
+
+        // ==========================================
+        // CADASTRAR USUÁRIO
+        // ==========================================
+
+        function cadastrarUsuario(event) {
+
+            event.preventDefault();
+
+
+            const id =
+                document
+                .getElementById("idUsuario")
+                .value
+                .trim()
+                .toUpperCase();
+
+
+            const nome =
+                document
+                .getElementById("nomeUsuario")
+                .value
+                .trim();
+
+
+            const status =
+                document
+                .getElementById("statusUsuario")
+                .value;
+
+
+            const existe = usuarios.some(function(usuario) {
+
+                return usuario.id === id;
+
+            });
+
+
+            if (existe) {
+
+                mostrarMensagem(
+                    "mensagemUsuario",
+                    "Já existe um usuário com essa identificação."
+                );
+
+                return;
+            }
+
+
+            usuarios.push({
+
+                id: id,
+                nome: nome,
+                status: status
+
+            });
+
+
+            listarUsuarios();
+
+            event.target.reset();
+
+
+            mostrarMensagem(
+                "mensagemUsuario",
+                "Usuário cadastrado com sucesso!"
+            );
+
+        }
+
+
+        // ==========================================
+        // EDITAR USUÁRIO
+        // ==========================================
+
+        function editarUsuario(id) {
+
+            const usuario =
+                usuarios.find(function(item) {
+
+                    return item.id === id;
+
+                });
+
+
+            if (!usuario) {
+                return;
+            }
+
+
+            const novoNome =
+                prompt(
+                    "Digite o novo nome do usuário:",
+                    usuario.nome
+                );
+
+
+            if (novoNome === null) {
+                return;
+            }
+
+
+            if (novoNome.trim() === "") {
+
+                alert("O nome não pode ficar vazio.");
+
+                return;
+            }
+
+
+            usuario.nome = novoNome.trim();
+
+            listarUsuarios();
+
+        }
+
+
+        // ==========================================
+        // EXCLUIR USUÁRIO
+        // ==========================================
+
+        function excluirUsuario(id) {
+
+            const usuario =
+                usuarios.find(function(item) {
+
+                    return item.id === id;
+
+                });
+
+
+            if (!usuario) {
+                return;
+            }
+
+
+            const confirmar =
+                confirm(
+                    "Tem certeza que deseja excluir este usuário?"
+                );
+
+
+            if (!confirmar) {
+                return;
+            }
+
+
+            usuarios =
+                usuarios.filter(function(item) {
+
+                    return item.id !== id;
+
+                });
+
+
+            listarUsuarios();
+
+        }
+
+
+        // ==========================================
+        // FORMULÁRIO DE EMPRÉSTIMO
+        // ==========================================
+
+        function carregarFormularioEmprestimo() {
+
+            const selectEquipamento =
+                document.getElementById(
+                    "equipamentoEmprestimo"
+                );
+
+
+            const selectUsuario =
+                document.getElementById(
+                    "usuarioEmprestimo"
+                );
+
+
+            selectEquipamento.innerHTML =
+                '<option value="">Selecione o equipamento</option>';
+
+
+            selectUsuario.innerHTML =
+                '<option value="">Selecione o usuário</option>';
+
+
+            equipamentos
+                .filter(function(equipamento) {
+
+                    return equipamento.situacao === "Disponível";
+
+                })
+                .forEach(function(equipamento) {
+
+                    const option =
+                        document.createElement("option");
+
+
+                    option.value = equipamento.id;
+
+                    option.textContent =
+                        equipamento.id +
+                        " - " +
+                        equipamento.nome;
+
+
+                    selectEquipamento.appendChild(option);
+
+                });
+
+
+            usuarios
+                .filter(function(usuario) {
+
+                    return usuario.status === "Ativo";
+
+                })
+                .forEach(function(usuario) {
+
+                    const option =
+                        document.createElement("option");
+
+
+                    option.value = usuario.id;
+
+                    option.textContent =
+                        usuario.id +
+                        " - " +
+                        usuario.nome;
+
+
+                    selectUsuario.appendChild(option);
+
+                });
+
+        }
+
+
+        // ==========================================
+        // REGISTRAR EMPRÉSTIMO
+        // ==========================================
+
+        function registrarEmprestimo(event) {
+
+            event.preventDefault();
+
+
+            const idEquipamento =
+                document
+                .getElementById("equipamentoEmprestimo")
+                .value;
+
+
+            const idUsuario =
+                document
+                .getElementById("usuarioEmprestimo")
+                .value;
+
+
+            const data =
+                document
+                .getElementById("dataEmprestimo")
+                .value;
+
+
+            if (!idEquipamento || !idUsuario || !data) {
+
+                mostrarMensagem(
+                    "mensagemEmprestimo",
+                    "Preencha todos os campos."
+                );
+
+                return;
+            }
+
+
+            const equipamento =
+                equipamentos.find(function(item) {
+
+                    return item.id === idEquipamento;
+
+                });
+
+
+            const usuario =
+                usuarios.find(function(item) {
+
+                    return item.id === idUsuario;
+
+                });
+
+
+            if (!equipamento || !usuario) {
+                return;
+            }
+
+
+            equipamento.situacao = "Emprestado";
+
+
+            const partes = data.split("-");
+
+            const dataFormatada =
+                partes[2] +
+                "/" +
+                partes[1] +
+                "/" +
+                partes[0];
+
+
+            historico.push({
+
+                equipamento: equipamento.nome,
+                usuario: usuario.nome,
+                data: dataFormatada,
+                operacao: "Empréstimo"
+
+            });
+
+
+            event.target.reset();
+
+
+            mostrarMensagem(
+                "mensagemEmprestimo",
+                "Empréstimo registrado com sucesso!"
+            );
+
+        }
+
+
+        // ==========================================
+        // FORMULÁRIO DE DEVOLUÇÃO
+        // ==========================================
+
+        function carregarFormularioDevolucao() {
+
+            const select =
+                document.getElementById(
+                    "equipamentoDevolucao"
+                );
+
+
+            select.innerHTML =
+                '<option value="">Selecione o equipamento</option>';
+
+
+            equipamentos
+                .filter(function(equipamento) {
+
+                    return equipamento.situacao === "Emprestado";
+
+                })
+                .forEach(function(equipamento) {
+
+                    const option =
+                        document.createElement("option");
+
+
+                    option.value = equipamento.id;
+
+                    option.textContent =
+                        equipamento.id +
+                        " - " +
+                        equipamento.nome;
+
+
+                    select.appendChild(option);
+
+                });
+
+        }
+
+
+        // ==========================================
+        // REGISTRAR DEVOLUÇÃO
+        // ==========================================
+
+        function registrarDevolucao(event) {
+
+            event.preventDefault();
+
+
+            const idEquipamento =
+                document
+                .getElementById("equipamentoDevolucao")
+                .value;
+
+
+            if (!idEquipamento) {
+
+                mostrarMensagem(
+                    "mensagemDevolucao",
+                    "Selecione um equipamento."
+                );
+
+                return;
+            }
+
+
+            const equipamento =
+                equipamentos.find(function(item) {
+
+                    return item.id === idEquipamento;
+
+                });
+
+
+            if (!equipamento) {
+                return;
+            }
+
+
+            equipamento.situacao = "Disponível";
+
+
+            const dataAtual =
+                new Date();
+
+
+            const dataFormatada =
+                String(dataAtual.getDate()).padStart(2, "0") +
+                "/" +
+                String(dataAtual.getMonth() + 1).padStart(2, "0") +
+                "/" +
+                dataAtual.getFullYear();
+
+
+            historico.push({
+
+                equipamento: equipamento.nome,
+                usuario: "Sistema",
+                data: dataFormatada,
+                operacao: "Devolução"
+
+            });
+
+
+            event.target.reset();
+
+
+            mostrarMensagem(
+                "mensagemDevolucao",
+                "Devolução registrada com sucesso!"
+            );
+
+        }
+
+
+        // ==========================================
+        // LISTAR HISTÓRICO
+        // ==========================================
+
+        function listarHistorico() {
+
+            const tabela =
+                document.getElementById(
+                    "tabelaHistorico"
+                );
+
+
+            tabela.innerHTML = "";
+
+
+            historico.forEach(function(registro, indice) {
+
+                const linha =
+                    document.createElement("tr");
+
+
+                linha.innerHTML = `
+
+                    <td>${registro.equipamento}</td>
+
+                    <td>${registro.usuario}</td>
+
+                    <td>${registro.data}</td>
+
+                    <td>${registro.operacao}</td>
+
+                    <td>
+
+                        <button
+                            class="btn-excluir-historico"
+                            onclick="excluirHistorico(${indice})"
+                        >
+                            Excluir
+                        </button>
+
+                    </td>
+
+                `;
+
+
+                tabela.appendChild(linha);
+
+            });
+
+        }
+
+
+        // ==========================================
+        // EXCLUIR HISTÓRICO
+        // ==========================================
+
+        function excluirHistorico(indice) {
+
+            const confirmar =
+                confirm(
+                    "Tem certeza que deseja excluir este registro?"
+                );
+
+
+            if (!confirmar) {
+                return;
+            }
+
+
+            historico.splice(indice, 1);
+
+            listarHistorico();
+
+        }
+
+
+        // ==========================================
+        // MENSAGEM
+        // ==========================================
+
+        function mostrarMensagem(id, texto) {
+
+            const elemento =
+                document.getElementById(id);
+
+
+            elemento.textContent = texto;
+
+            elemento.classList.add("mostrar");
+
+
+            setTimeout(function() {
+
+                elemento.classList.remove("mostrar");
+
+            }, 3000);
+
+        }
+
+
+        // ==========================================
+        // INICIALIZAÇÃO
+        // ==========================================
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            listarEquipamentos();
+
+            listarUsuarios();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
