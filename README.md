@@ -34,8 +34,7 @@ Facilitar o gerenciamento dos equipamentos escolares, tornando o processo de emp
 O sistema será destinado a alunos, professores e responsáveis pelo controle dos equipamentos da instituição.
 
 ### Status do projeto
-
-Em desenvolvimento.
+Versão 1.0.0 - concluída e validada.
 
 ## Etapa 3 — Execução e Validação
 
