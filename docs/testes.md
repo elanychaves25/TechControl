@@ -28,3 +28,9 @@ Os testes realizados apresentaram os resultados esperados. As funcionalidades de
 Durante a validação do sistema, foi observado que as funcionalidades principais funcionaram conforme o esperado. Os testes permitiram verificar o cadastro, consulta, edição e exclusão de equipamentos e usuários, além do registro de empréstimos, devoluções e histórico.
 
 A utilização do sistema mostrou que o fluxo das operações está organizado e permite realizar as tarefas propostas de forma simples.
+## Evidências dos testes
+
+Durante a validação do sistema, foram realizados testes nas principais funcionalidades do TechControl, incluindo cadastro, edição, exclusão, empréstimo, devolução e consulta do histórico.
+
+As evidências foram obtidas por meio de testes realizados diretamente no sistema publicado no GitHub Pages.
+
