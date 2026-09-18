@@ -36,3 +36,27 @@ O sistema será destinado a alunos, professores e responsáveis pelo controle do
 ### Status do projeto
 
 Em desenvolvimento.
+
+## Etapa 3 — Execução e Validação
+
+Nesta etapa foi realizada a execução e validação do sistema TechControl, verificando o funcionamento das principais funcionalidades desenvolvidas.
+
+### Funcionalidades testadas
+
+- Pesquisa de equipamentos;
+- Cadastro de equipamentos;
+- Edição de equipamentos;
+- Exclusão de equipamentos;
+- Cadastro de usuários;
+- Edição de usuários;
+- Exclusão de usuários;
+- Registro de empréstimos;
+- Registro de devoluções;
+- Consulta do histórico;
+- Exclusão de registros do histórico.
+
+### Validação
+
+Foram realizados testes práticos no sistema para verificar o funcionamento das funcionalidades. Os testes apresentaram os resultados esperados.
+
+Os registros detalhados dos testes estão disponíveis em [`docs/testes.md`](docs/testes.md).
