@@ -59,3 +59,16 @@ Nesta etapa foi realizada a execução e validação do sistema TechControl, ver
 Foram realizados testes práticos no sistema para verificar o funcionamento das funcionalidades. Os testes apresentaram os resultados esperados.
 
 Os registros detalhados dos testes estão disponíveis em [`docs/testes.md`](docs/testes.md).
+## Como executar
+
+O TechControl é um sistema desenvolvido em HTML, CSS e JavaScript.
+
+Para executar o sistema, basta abrir o arquivo `src/index.html` em um navegador.
+
+O sistema também está disponível online por meio do GitHub Pages.
+
+## Resultados finais
+
+O sistema foi desenvolvido e validado com as principais funcionalidades de controle de equipamentos escolares.
+
+Foram realizados testes de cadastro, consulta, edição, exclusão, empréstimo, devolução e histórico, apresentando os resultados esperados.
